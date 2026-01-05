@@ -109,6 +109,7 @@ $requick = array(
   array("tbl" => "news", "field" => "id", "source" => "news", "com" => "ho-tro", "type" => "ho-tro", "menu" => false),
   array("tbl" => "static", "field" => "id", "source" => "static", "com" => "ve-chung-toi", "type" => "ve-chung-toi", "menu" => true),
   array("tbl" => "", "field" => "id", "source" => "", "com" => "lien-he", "type" => "", "menu" => true),
+  array("tbl" => "", "field" => "id", "source" => "", "com" => "gioi-thieu", "type" => "", "menu" => true),
 );
 
 /* Find data */
@@ -207,6 +208,21 @@ switch ($com) {
     $type = $com;
     $seo->set('type', 'article');
     $titleMain = "Về chúng tôi";
+    break;
+
+  case 'gioi-thieu':
+    $source = "about";
+    $page = "about/about";
+    $type = $com;
+    $seo->set('type', 'article');
+    $titleMain = "Giới thiệu";
+    break;
+  case 'giai-phap':
+    $source = "solution";
+    $page = "solution/solution";
+    $type = $com;
+    $seo->set('type', 'article');
+    $titleMain = "Giải pháp";
     break;
 
   case 'sitemap':
