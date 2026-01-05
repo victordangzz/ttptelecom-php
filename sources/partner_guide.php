@@ -1,0 +1,45 @@
+<?php
+if (!defined('SOURCES')) die("Error");
+$seopage = $d->rawQueryOne("select * from #_seopage where type = ? limit 0,1", array($type));
+$seo->set('h1', $titleMain);
+if (!empty($seopage['title' . $seolang])) $seo->set('title', $seopage['title' . $seolang]);
+else $seo->set('title', $titleMain);
+if (!empty($seopage['keywords' . $seolang])) $seo->set('keywords', $seopage['keywords' . $seolang]);
+if (!empty($seopage['description' . $seolang])) $seo->set('description', $seopage['description' . $seolang]);
+$seo->set('url', $func->getPageURL());
+$imgJson = (!empty($seopage['options'])) ? json_decode($seopage['options'], true) : null;
+if (!empty($seopage['photo'])) {
+    if (empty($imgJson) || ($imgJson['p'] != $seopage['photo'])) {
+        $imgJson = $func->getImgSize($seopage['photo'], UPLOAD_SEOPAGE_L . $seopage['photo']);
+        $seo->updateSeoDB(json_encode($imgJson), 'seopage', $seopage['id']);
+    }
+    if (!empty($imgJson)) {
+        $seo->set('photo', $configBase . THUMBS . '/' . $imgJson['w'] . 'x' . $imgJson['h'] . 'x2/' . UPLOAD_SEOPAGE_L . $seopage['photo']);
+        $seo->set('photo:width', $imgJson['w']);
+        $seo->set('photo:height', $imgJson['h']);
+        $seo->set('photo:type', $imgJson['m']);
+    }
+}
+$loiich = $d->rawQuery("select name$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc limit 0,4", array("loiich"));
+$yeu_cau_dk = $d->rawQuery("select name$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc limit 0,3", array("ycdk"));
+$qtdk = $d->rawQuery("select name$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc limit 0,6", array("qtdk"));
+$tinh_nang_ud = $d->rawQuery("select name$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc limit 0,4", array("tinh_nang_ud"));
+$cshh = [
+    0 => [
+        "percent" => "70%",
+        "title" => "Thợ mới",
+        "desc" => "0-50 đơn"
+    ],
+    1 => [
+        "percent" => "75%",
+        "title" => "Thợ trung cấp",
+        "desc" => "51-200 đơn"
+    ],
+    2 => [
+        "percent" => "80%",
+        "title" => "Thợ cao cấp",
+        "desc" => "200+ đơn"
+    ]
+];
+if (!empty($titleMain)) $breadcr->set($com, $titleMain);
+$breadcrumbs = $breadcr->get();

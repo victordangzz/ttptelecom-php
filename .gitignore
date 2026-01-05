@@ -1,0 +1,44 @@
+# # Operating System Files
+# .DS_Store
+# Thumbs.db
+# desktop.ini
+
+# # Editor Files
+# .vscode/
+# .idea/
+# *.swp
+# *.swo
+# *~
+
+# # Temporary Files
+# *.tmp
+# *.temp
+# *.log
+# *.cache
+
+# # PHP
+# vendor/
+# composer.phar
+# *.phar
+
+# # Database
+# *.sql
+# *.sqlite
+# *.db
+
+# # Environment Files
+# .env
+# .env.local
+
+# # Uploads & Media (tùy chọn - bỏ comment nếu muốn ignore)
+# # uploads/*
+# # images/uploads/*
+
+# # Cache
+# cache/
+# tmp/
+# temp/
+
+# # Node modules (nếu có)
+# node_modules/
+
