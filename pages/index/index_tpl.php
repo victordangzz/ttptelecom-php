@@ -628,7 +628,6 @@
 
   </div>
 </section>
-
 <!-- <?php if (!empty($services)): ?>
   <section class="serv">
     <div class="wrap-content">

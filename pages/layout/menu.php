@@ -1,95 +1,41 @@
-<div class="w-menu <?= $com == '' || $com == 'index' ? 'fx' : 'st' ?>">
-  <div class="menu">
-    <div class="wrap-content">
-      <div class="d-flex align-items-center" style="gap: 24px; cursor: pointer;">
-        <p class="mb-0 icon-web-bar">
-          <i class="fa-solid fa-bars"></i>
-        </p>
-        <a class="logo-head peShiner" href="">
-          <img onerror="this.src='<?= THUMBS ?>/141x32x1/assets/images/noimage.png';" src="<?= THUMBS ?>/141x32x1/<?= UPLOAD_PHOTO_L . $logo['photo'] ?>" alt="logo" title="logo" />
-        </a>
-      </div>
-      <ul class="menu-main">
-        <li>
-          <a class="transition" href="#" title="Trở thành Đối tác của Fixhub">Trở thành Đối tác của Fixhub</a>
+<header class="l-header" id="header">
+  <div class="l-header__inner">
+    <!-- Logo bên trái -->
+    <div class="l-header__left">
+      <a class="l-header__logo" href="<?= ASSET ?>" title="<?= $setting['name' . $lang] ?? 'TTP Telecom' ?>">
+        <img onerror="this.src='<?= THUMBS ?>/99x70x1/assets/images/noimage.png';"
+          src="<?= THUMBS ?>/99x70x1/<?= UPLOAD_PHOTO_L . $logo['photo'] ?>"
+          alt="<?= $setting['name' . $lang] ?>"
+          title="<?= $setting['name' . $lang] ?>" />
+      </a>
+    </div>
+
+    <!-- Menu bên phải (Desktop) -->
+    <nav class="l-header__nav">
+      <ul class="l-header__nav-list">
+        <li class="l-header__nav-item">
+          <a href="<?= ASSET ?>" class="l-header__nav-link <?= (!isset($source) || $source == '' || $source == 'index') ? 'active' : '' ?>">Trang Chủ</a>
         </li>
-        <li>
-          <a class="<?= $com == 'lien-he' ? 'active' : '' ?> transition" href="lien-he" title="Trung tâm Hỗ trợ">
-            Trung tâm Hỗ trợ
-          </a>
+        <li class="l-header__nav-item">
+          <a href="<?= ASSET ?>dich-vu" class="l-header__nav-link <?= (isset($source) && $source == 'dich-vu') ? 'active' : '' ?>">Dịch Vụ</a>
+        </li>
+        <li class="l-header__nav-item">
+          <a href="<?= ASSET ?>giai-phap" class="l-header__nav-link <?= (isset($source) && $source == 'giai-phap') ? 'active' : '' ?>">Giải Pháp</a>
+        </li>
+        <li class="l-header__nav-item">
+          <a href="<?= ASSET ?>gioi-thieu" class="l-header__nav-link <?= (isset($source) && $source == 'gioi-thieu') ? 'active' : '' ?>">Giới Thiệu</a>
+        </li>
+        <li class="l-header__nav-item">
+          <a href="<?= ASSET ?>lien-he" class="l-header__nav-link <?= (isset($source) && $source == 'lien-he') ? 'active' : '' ?>">Liên Hệ</a>
         </li>
       </ul>
-    </div>
-    <div class="wp-box-mn">
-      <div class="wrap-content">
-        <div class="box-mn">
-          <div class="mn-item">
-            <h3 class="mn-head">Về Fixhub</h3>
-            <div>
-              <a href="ve-chung-toi" class="mn-slug" title="Câu chuyện của Fixhub">
-                Câu chuyện của Fixhub
-              </a>
-              <a href="ve-chung-toi" class="mn-slug" title="Chúng tôi là ai và chúng tôi làm gì">
-                Chúng tôi là ai và chúng tôi làm gì
-              </a>
-            </div>
-          </div>
-          <div class="mn-item">
-            <h3 class="mn-head">Người dùng</h3>
-            <div>
-              <a href="#" class="mn-slug" title="Ứng dụng khách hàng">Ứng dụng khách hàng</a>
-              <a href="dich-vu" class="mn-slug" title="Dịch vụ của chúng tôi">
-                Dịch vụ của chúng tôi
-              </a>
-            </div>
-          </div>
-          <div class="mn-item">
-            <h3 class="mn-head">Đối tác thợ kỹ thuật</h3>
-            <div>
-              <a href="huong-dan-dang-ky-tho" class="mn-slug" title="Hướng dẫn đăng ký thợ">Hướng dẫn đăng ký thợ</a>
-              <a href="huong-dan-su-dung" class="mn-slug" title="Ứng dụng Fixhub Partner">
-                Ứng dụng Fixhub Partner
-              </a>
-            </div>
-          </div>
-          <div class="mn-item">
-            <h3 class="mn-head">Quan hệ cổ đông</h3>
-            <div>
-              <a href="#" class="mn-slug" title="Thông tin cơ bản của chúng tôi">Thông tin cơ bản của chúng tôi</a>
-              <a href="tin-tuc" class="mn-slug" title="Tin tức">
-                Tin tức
-              </a>
-            </div>
-          </div>
-          <div class="mn-item">
-            <h3 class="mn-head">Địa chỉ</h3>
-            <div>
-              <a href="#" class="mn-slug" title="Văn phòng Đại lý các khu vực và quốc gia">Văn phòng Đại lý các khu vực và quốc gia</a>
-              <a href="lien-he" class="mn-slug" title="Liên hệ">
-                Liên hệ
-              </a>
-            </div>
-          </div>
-          <div class="mn-item">
-            <h3 class="mn-head">Tin tức & Ưu đãi</h3>
-            <div>
-              <a href="tin-tuc" class="mn-slug" title="Tin tức mới nhất">Tin tức mới nhất</a>
-              <a href="chien-dich-khuyen-mai" class="mn-slug" title="Chiến dịch khuyến mãi">
-                Chiến dịch khuyến mãi
-              </a>
-            </div>
-          </div>
-          <div class="mn-item">
-            <h3 class="mn-head">Tác động</h3>
-            <div>
-              <a href="#" class="mn-slug" title="Chúng tôi có tác động như thế nào">Chúng tôi có tác động như thế nào</a>
-              <a href="#" class="mn-slug" title="Các vấn đề quan tâm xã hội">
-                Các vấn đề quan tâm xã hội
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </nav>
+
+    <!-- Nút Hamburger (Mobile) -->
+    <button class="l-header__hamburger" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
-</div>
+</header>

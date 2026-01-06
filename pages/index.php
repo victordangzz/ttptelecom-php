@@ -2,24 +2,21 @@
 <html lang="<?= $config['website']['lang-doc'] ?>">
 
 <head>
-  <?php include PAGES . LAYOUT . "header.php"; ?>
+  <?php include PAGES . LAYOUT . "head.php"; ?>
   <?php include PAGES . LAYOUT . "css.php"; ?>
 </head>
 
 <body style="background-color: <?= ($source == 'index') ? 'white' : 'oklch(98.5% .002 247.839)' ?>;">
   <?php
   include PAGES . LAYOUT . "seo.php";
-  // if ($deviceType !== 'mobile') {
-  //   include PAGES . LAYOUT . "menu.php";
-  // }
-  // include PAGES . LAYOUT . "mmenu.php";
+  include PAGES . LAYOUT . "menu.php";
+  include PAGES . LAYOUT . "mmenu.php";
   // if ($source == 'index')
   //   include PAGES . LAYOUT . "slide.php";
   // else
   //   include PAGES . LAYOUT . "breadcrumb.php";
   if ($source == 'index')
     include PAGES . LAYOUT . "slide.php";
-
   ?>
 
   <div class="<?= ($source == 'index') ? 'wrap-home' : 'wrap-content padding-top-bottom' ?>">

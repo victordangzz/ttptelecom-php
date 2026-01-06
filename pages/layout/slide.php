@@ -6,19 +6,19 @@
           <div class="hero-foresta__overlay"></div>
           <div class="slideshow-image">
             <picture>
-              <source media="(max-width: 768px)" srcset="thumbs/768x768x1/<?=UPLOAD_PHOTO_L.$v['photo']?>"/>
-              <source media="(max-width: 576px)" srcset="thumbs/576x576x1/<?=UPLOAD_PHOTO_L.$v['photo']?>"/>
+              <source media="(max-width: 768px)" srcset="thumbs/768x768x1/<?= UPLOAD_PHOTO_L . $v['photo'] ?>" />
+              <source media="(max-width: 576px)" srcset="thumbs/576x576x1/<?= UPLOAD_PHOTO_L . $v['photo'] ?>" />
               <img class="lazy w-100" onerror="this.src='<?= THUMBS ?>/1920x880x1/assets/images/noimage.png';" data-src="<?= THUMBS ?>/1920x880x1/<?= UPLOAD_PHOTO_L . $v['photo'] ?>" alt="<?= $v['name' . $lang] ?>" title="<?= $v['name' . $lang] ?>" />
             </picture>
           </div>
           <div class="hero-foresta__content wrap-content">
             <div class="hero-foresta__text animate__zoomIn wow" data-wow-iteration="1" data-wow-duration="0.8s">
-              <p class="hero-foresta__title truncate"><?=$v['name'.$lang]?></p>
+              <p class="hero-foresta__title truncate"><?= $v['name' . $lang] ?></p>
               <h1 class="hero-foresta__tagline truncate">
-                <?=$v['desc'.$lang]?>
+                <?= $v['desc' . $lang] ?>
               </h1>
               <p class="hero-foresta__desc text-split">
-                <?=$v['content'.$lang]?>
+                <?= $v['content' . $lang] ?>
               </p>
               <div class="hero-foresta__actions">
                 <a href="ve-chung-toi" class="btn btn-foresta-primary">Xem thêm về chúng tôi</a>

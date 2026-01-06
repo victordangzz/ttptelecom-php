@@ -1353,5 +1353,5 @@ $(document).ready(function () {
   PHP_FRAMEWORK.NewsTab();
   PHP_FRAMEWORK.Wows();
   PHP_FRAMEWORK.BarMenu();
-  PHP_FRAMEWORK.NoCopy();
+  // PHP_FRAMEWORK.NoCopy();
 });
