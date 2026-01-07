@@ -12,19 +12,7 @@ $config['news'][$nametype]['height'] = 45;
 $config['news'][$nametype]['thumb'] = '45x45x2';
 $config['news'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.webp|.WEBP';
 
-/* VUX*/
-$nametype = "vux";
-$config['news'][$nametype]['title_main'] = "Vux";
-$config['news'][$nametype]['copy'] = true;
-$config['news'][$nametype]['check'] = array("hienthi" => "Hiển thị");
-$config['news'][$nametype]['images'] = true;
-$config['news'][$nametype]['show_images'] = true;
-$config['news'][$nametype]['slogan'] = true;
-$config['news'][$nametype]['desc'] = true;  
-$config['news'][$nametype]['width'] = 45;
-$config['news'][$nametype]['height'] = 45;
-$config['news'][$nametype]['thumb'] = '45x45x2';
-$config['news'][$nametype]['img_type'] = '.jpg|.gif|.png|.jpeg|.gif|.webp|.WEBP';
+
 
 /* Hero Section*/
 $nametype = "hero-section";

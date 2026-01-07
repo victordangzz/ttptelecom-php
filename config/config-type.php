@@ -5,6 +5,22 @@ require_once 'type/config-type-news.php';
 require_once 'type/config-type-static.php';
 require_once 'type/config-type-photo.php';
 
+/* Config cho trang chủ */
+require_once 'type-static-homepage.php';
+require_once 'type-news-homepage.php';
+
+/* Config cho trang About */
+require_once 'type-static-about.php';
+require_once 'type-news-about.php';
+
+/* Config cho trang Services */
+require_once 'type-static-services.php';
+require_once 'type-news-services.php';
+
+/* Config cho trang Solution */
+require_once 'type-static-solution.php';
+require_once 'type-news-solution.php';
+
 /* Seo page */
 $config['seopage']['page'] = array(
   "trang-chu" => trangchu,

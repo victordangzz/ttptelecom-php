@@ -40,7 +40,6 @@ if (!$func->isGoogleSpeed()) {
   $js->set("photobox/photobox.js");
   $js->set("magiczoomplus/magiczoomplus.js");
   $js->set("toc/toc.js");
-  $js->set("mmenu/mmenu.js");
 }
 // $js->set("js/nocopy.js");
 $js->set("js/shiner.min.js");
@@ -49,6 +48,7 @@ $js->set("slick/slick.js");
 $js->set("js/functions.js");
 $js->set("aos/aos.js");
 $js->set("js/apps.js");
+$js->set("js/solutions.js");
 echo $js->get();
 
 ?>

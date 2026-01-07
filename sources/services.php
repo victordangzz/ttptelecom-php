@@ -2,9 +2,9 @@
 if (!defined('SOURCES')) die("Error");
 
 /* =====================================================
-   DATA RETRIEVAL - TRANG GIẢI PHÁP
-   File: sources/solution.php
-   Route: giai-phap (từ router/web.php)
+   DATA RETRIEVAL - TRANG DỊCH VỤ
+   File: sources/services.php
+   Route: services (từ router/web.php)
    ===================================================== */
 
 /* SEO - Thông tin SEO của trang */
@@ -12,10 +12,10 @@ $seo->set('type', 'article');
 $favicon = $cache->get("SELECT photo FROM #_photo WHERE type = ? AND act = ? LIMIT 0,1", array('favicon', 'photo_static'), 'fetch', 7200);
 $seo->set('favicon', $favicon['photo']);
 $seo->set('url', $func->getPageURL());
-$title_crumb = "Giải pháp";
+$title_crumb = "Dịch vụ";
 $seo->set('title', $title_crumb);
-$seo->set('keywords', 'giải pháp, phần mềm, outsourcing, chuyển đổi số, digital transformation');
-$seo->set('description', 'Giải pháp công nghệ toàn diện từ TTP Telecom: Phát triển phần mềm, Chuyển đổi số, Giải pháp ngành');
+$seo->set('keywords', 'dịch vụ, internet doanh nghiệp, data center, cloud server, hạ tầng IT');
+$seo->set('description', 'Các dịch vụ hạ tầng số toàn diện từ TTP Telecom: Internet, Data Center, Cloud, Hạ tầng IT');
 $seo->set('photo', $func->getImgSize('assets/images/default-share.jpg', '1200x630x1'));
 
 /* Breadcrumbs */
@@ -23,176 +23,175 @@ $breadcr->set($title_crumb, $func->getPageURL());
 $breadcr->out();
 
 /* =====================================================
-   1. SOLUTION HERO - BANNER
+   1. SERVICE HERO - BANNER
    ===================================================== */
-$hero_solution = $cache->get(
+$hero_services = $cache->get(
     "SELECT namevi, sloganvi, descvi, contentvi 
      FROM #_static 
      WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
      LIMIT 0,1",
-    array('hero-solution', 'hienthi'),
+    array('hero-services', 'hienthi'),
     'fetch',
     7200
 );
 
 /* =====================================================
-   2. SOFTWARE OUTSOURCING - HEADER
+   2. TTP CONNECT - INTERNET & TRUYỀN DẪN
    ===================================================== */
-$outsourcing_header = $cache->get(
+$ttp_connect_header = $cache->get(
     "SELECT namevi, descvi, photo 
      FROM #_static 
      WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
      LIMIT 0,1",
-    array('outsourcing-header', 'hienthi'),
+    array('ttp-connect-header', 'hienthi'),
     'fetch',
     7200
 );
 
-/* =====================================================
-   3. SOFTWARE OUTSOURCING - SOLUTIONS
-   ===================================================== */
-$outsourcing_solutions = $cache->get(
-    "SELECT namevi, sloganvi, descvi, contentvi 
+$ttp_connect_items = $cache->get(
+    "SELECT namevi, descvi, contentvi 
      FROM #_news 
      WHERE type = ? AND status != ''
      AND find_in_set('hienthi', status)
      ORDER BY numb ASC, id DESC",
-    array('outsourcing-solutions'),
+    array('ttp-connect-items'),
     'result',
     7200
 );
 
 /* =====================================================
-   4. DEV PROCESS - HEADER
+   3. TTP DATA - MÁY CHỦ & DATA CENTER
    ===================================================== */
-$dev_process_header = $cache->get(
+$ttp_data_header = $cache->get(
+    "SELECT namevi, descvi, photo 
+     FROM #_static 
+     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
+     LIMIT 0,1",
+    array('ttp-data-header', 'hienthi'),
+    'fetch',
+    7200
+);
+
+$ttp_data_items = $cache->get(
+    "SELECT namevi, sloganvi, descvi, contentvi 
+     FROM #_news 
+     WHERE type = ? AND status != ''
+     AND find_in_set('hienthi', status)
+     ORDER BY numb ASC, id DESC",
+    array('ttp-data-items'),
+    'result',
+    7200
+);
+
+/* =====================================================
+   4. TTP CLOUD - HẠ TẦNG ĐÁM MÂY
+   ===================================================== */
+$ttp_cloud_header = $cache->get(
+    "SELECT namevi, descvi, photo 
+     FROM #_static 
+     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
+     LIMIT 0,1",
+    array('ttp-cloud-header', 'hienthi'),
+    'fetch',
+    7200
+);
+
+$ttp_cloud_items = $cache->get(
+    "SELECT namevi, descvi, contentvi 
+     FROM #_news 
+     WHERE type = ? AND status != ''
+     AND find_in_set('hienthi', status)
+     ORDER BY numb ASC, id DESC",
+    array('ttp-cloud-items'),
+    'result',
+    7200
+);
+
+/* =====================================================
+   5. TTP INFRA - HẠ TẦNG CNTT
+   ===================================================== */
+$ttp_infra_header = $cache->get(
+    "SELECT namevi, descvi, photo 
+     FROM #_static 
+     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
+     LIMIT 0,1",
+    array('ttp-infra-header', 'hienthi'),
+    'fetch',
+    7200
+);
+
+$ttp_infra_items = $cache->get(
+    "SELECT namevi, descvi 
+     FROM #_news 
+     WHERE type = ? AND status != ''
+     AND find_in_set('hienthi', status)
+     ORDER BY numb ASC, id DESC",
+    array('ttp-infra-items'),
+    'result',
+    7200
+);
+
+/* =====================================================
+   6. PROCESS STEPS - QUY TRÌNH TRIỂN KHAI
+   ===================================================== */
+$header_process = $cache->get(
     "SELECT namevi, sloganvi 
      FROM #_static 
      WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
      LIMIT 0,1",
-    array('dev-process-header', 'hienthi'),
+    array('header-process', 'hienthi'),
     'fetch',
     7200
 );
 
-/* =====================================================
-   5. DEV PROCESS STEPS
-   ===================================================== */
-$dev_process_steps = $cache->get(
+$process_steps = $cache->get(
     "SELECT namevi, sloganvi, descvi 
      FROM #_news 
      WHERE type = ? AND status != ''
      AND find_in_set('hienthi', status)
      ORDER BY numb ASC, id DESC",
-    array('dev-process-steps'),
+    array('process-steps'),
     'result',
     7200
 );
 
 /* =====================================================
-   6. DIGITAL TRANSFORMATION - HEADER
+   7. DATA CENTER ADVANTAGES - ƯU ĐIỂM DATA CENTER
    ===================================================== */
-$digital_header = $cache->get(
+$data_center_advantages = $cache->get(
+    "SELECT namevi 
+     FROM #_news 
+     WHERE type = ? AND status != ''
+     AND find_in_set('hienthi', status)
+     ORDER BY numb ASC, id DESC",
+    array('data-center-advantages'),
+    'result',
+    7200
+);
+
+/* =====================================================
+   8. WHY CHOOSE CLOUD - TẠI SAO CHỌN TTP CLOUD
+   ===================================================== */
+$why_choose_cloud = $cache->get(
     "SELECT namevi, descvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('digital-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   7. DIGITAL TRANSFORMATION - SOLUTIONS
-   ===================================================== */
-$digital_solutions = $cache->get(
-    "SELECT namevi, sloganvi, descvi, contentvi 
      FROM #_news 
      WHERE type = ? AND status != ''
      AND find_in_set('hienthi', status)
      ORDER BY numb ASC, id DESC",
-    array('digital-solutions'),
+    array('why-choose-cloud'),
     'result',
     7200
 );
 
 /* =====================================================
-   8. INDUSTRY SOLUTIONS - HEADER
+   9. CTA SECTION - CALL TO ACTION
    ===================================================== */
-$industry_header = $cache->get(
-    "SELECT namevi, sloganvi, descvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('industry-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   9. INDUSTRY SOLUTIONS - RETAIL
-   ===================================================== */
-$industry_retail = $cache->get(
-    "SELECT namevi, descvi, contentvi, options 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('industry-retail'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   10. INDUSTRY SOLUTIONS - HEALTHCARE
-   ===================================================== */
-$industry_healthcare = $cache->get(
-    "SELECT namevi, descvi, contentvi, options 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('industry-healthcare'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   11. TECH PLATFORMS - HEADER
-   ===================================================== */
-$tech_platforms_header = $cache->get(
-    "SELECT namevi, sloganvi, descvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('tech-platforms-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   12. TECH PLATFORMS
-   ===================================================== */
-$tech_platforms = $cache->get(
-    "SELECT namevi, sloganvi, descvi, contentvi, options 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('tech-platforms'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   13. CTA SECTION
-   ===================================================== */
-$cta_solution = $cache->get(
+$cta_services = $cache->get(
     "SELECT namevi, descvi, contentvi 
      FROM #_static 
      WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
      LIMIT 0,1",
-    array('cta-solution', 'hienthi'),
+    array('cta-services', 'hienthi'),
     'fetch',
     7200
 );
@@ -200,4 +199,5 @@ $cta_solution = $cache->get(
 /* =====================================================
    RENDER VIEW - HIỂN THỊ TEMPLATE
    ===================================================== */
-$template = "solution/solution";
+$template = "services/services";
+
