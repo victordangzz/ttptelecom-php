@@ -1,0 +1,292 @@
+===============================================
+DỊCH VỤ NHẬP LIỆU NHANH - COPY/PASTE
+TTP TELECOM HOMEPAGE
+===============================================
+
+╔═══════════════════════════════════════════╗
+║  1. HERO TRANG CHỦ                        ║
+╚═══════════════════════════════════════════╝
+
+Slogan:
+Hạ tầng số cho doanh nghiệp
+
+Tên:
+TTP Telecom – Kiến tạo hạ
+tầng số cho doanh nghiệp
+
+Mô tả:
+Giúp doanh nghiệp vận hành ổn định, mở rộng linh hoạt và vươn lên tầm cao mới. Chúng tôi tự hào làm tảng tin cậy đồng hành cùng bạn trong mọi giai đoạn phát triển.
+
+Options (JSON):
+{"button1_text":"Tìm Hiểu về chúng tôi","button1_link":"gioi-thieu","button2_text":"Liên hệ ngay","button2_link":"lien-he"}
+
+Check: ☑ Hiển thị
+Số thứ tự: 1
+
+===============================================
+
+╔═══════════════════════════════════════════╗
+║  2. GIỚI THIỆU TRANG CHỦ                  ║
+╚═══════════════════════════════════════════╝
+
+Slogan:
+Về chúng tôi
+
+Tên:
+Về <span class="highlight">TTP Telecom</span>
+
+Mô tả (HTML):
+<p>TTP Telecom tự hào là đơn vị cung cấp giải pháp IT/OT đặc biệt là công nghệ trong các doanh nghiệp, với định hướng <strong>"One-Stop-Shop"</strong> - nền tảng điều hành trọn bộ, máy chủ, cloud (IaaS)/container, AI và liên kết nội hạ tầng số hoá mọi quy trình doanh nghiệp.</p>
+
+Nội dung (HTML):
+<p>Chúng tôi không ngừng cải tiến, đổi mới sáng tạo, đồng hành cùng doanh nghiệp trong suốt hành trình chuyển đổi số với hạ tầng CNTT tiên tiến và phù hợp.</p>
+
+Hình ảnh: [Upload 600x800px]
+
+Options (JSON):
+{"stat1_number":"10+","stat1_label":"Năm kinh nghiệm","stat2_number":"1700+","stat2_label":"Dự án hoàn thành"}
+
+Check: ☑ Hiển thị
+Số thứ tự: 1
+
+===============================================
+
+╔═══════════════════════════════════════════╗
+║  3. HEADER DỊCH VỤ                        ║
+╚═══════════════════════════════════════════╝
+
+Slogan:
+Hệ sinh thái dịch vụ
+
+Tên:
+Hệ Sinh Thái <span class="highlight">Dịch Vụ</span>
+
+Mô tả:
+Cung cấp giải pháp trọn gói từ kết nối mạng, lưu trữ dữ liệu đến chuyển đổi số toàn diện cho doanh nghiệp
+
+Check: ☑ Hiển thị
+Số thứ tự: 1
+
+===============================================
+
+╔═══════════════════════════════════════════╗
+║  4. DỊCH VỤ #1 - TTP CONNECT              ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+TTP Connect
+
+Mô tả:
+Internet & Truyền dẫn doanh nghiệp (Leased line, IP transit)
+
+Slug: ttp-connect
+
+Hình ảnh: [Upload icon 200x200px]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 1
+
+-----------------------------------------------
+
+╔═══════════════════════════════════════════╗
+║  4. DỊCH VỤ #2 - TTP DATA                 ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+TTP Data
+
+Mô tả:
+Máy chủ, Data center - Colocation, Dedicated server
+
+Slug: ttp-data
+
+Hình ảnh: [Upload icon 200x200px]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 2
+
+-----------------------------------------------
+
+╔═══════════════════════════════════════════╗
+║  4. DỊCH VỤ #3 - TTP CLOUD                ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+TTP Cloud
+
+Mô tả:
+Hạ tầng đám mây Cloud server, storage, backup & recovery
+
+Slug: ttp-cloud
+
+Hình ảnh: [Upload icon 200x200px]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 3
+
+-----------------------------------------------
+
+╔═══════════════════════════════════════════╗
+║  4. DỊCH VỤ #4 - TTP INFRA                ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+TTP Infra
+
+Mô tả:
+Hạ tầng CNTT LAN/WAN, Camera AI, giải pháp an ninh
+
+Slug: ttp-infra
+
+Hình ảnh: [Upload icon 200x200px]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 4
+
+-----------------------------------------------
+
+╔═══════════════════════════════════════════╗
+║  4. DỊCH VỤ #5 - TTP SOLUTION             ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+TTP Solution
+
+Mô tả:
+Giải pháp chuyển đổi số ERP, CRM, AI chatbot
+
+Slug: ttp-solution
+
+Hình ảnh: [Upload icon 200x200px]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 5
+
+===============================================
+
+╔═══════════════════════════════════════════╗
+║  5. HEADER ƯU THẾ                         ║
+╚═══════════════════════════════════════════╝
+
+Slogan:
+Tại sao chọn chúng tôi
+
+Tên:
+Tại Sao Chọn <span class="highlight">TTP Telecom?</span>
+
+Mô tả:
+Chúng tôi mang đến những ưu thế vượt trội cho doanh nghiệp của bạn
+
+Check: ☑ Hiển thị
+Số thứ tự: 1
+
+===============================================
+
+╔═══════════════════════════════════════════╗
+║  6. ƯU THẾ #1 - HẠ TẦNG HIỆN ĐẠI          ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+Hạ tầng hiện đại
+
+Mô tả:
+Data Center chuẩn Tier 3 đạt chứng nhận TVRA, SOC 2 Type II
+
+Hình ảnh: [Optional]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 1
+
+-----------------------------------------------
+
+╔═══════════════════════════════════════════╗
+║  6. ƯU THẾ #2 - KẾT NỐI TOÀN CẦU          ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+Kết nối toàn cầu
+
+Mô tả:
+Kết nối 15+ ISP và đối tác Internet từ Việt Nam ra thế giới
+
+Hình ảnh: [Optional]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 2
+
+-----------------------------------------------
+
+╔═══════════════════════════════════════════╗
+║  6. ƯU THẾ #3 - HIỆU SUẤT CAO             ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+Hiệu suất cao
+
+Mô tả:
+Cam kết SLA 99,99% uptime, độ trễ thấp, phản hồi nhanh
+
+Hình ảnh: [Optional]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 3
+
+-----------------------------------------------
+
+╔═══════════════════════════════════════════╗
+║  6. ƯU THẾ #4 - BẢO MẬT TUYỆT ĐỐI         ║
+╚═══════════════════════════════════════════╝
+
+Tên:
+Bảo mật tuyệt đối
+
+Mô tả:
+Firewall, DDoS protection theo tiêu chuẩn quốc tế
+
+Hình ảnh: [Optional]
+
+Check: ☑ Nổi bật, ☑ Hiển thị
+Số thứ tự: 4
+
+===============================================
+
+╔═══════════════════════════════════════════╗
+║  TỔNG KẾT                                 ║
+╚═══════════════════════════════════════════╝
+
+TỔNG SỐ BẢN GHI CẦN NHẬP: 13
+
+STATIC (4):
+  ☐ Hero trang chủ
+  ☐ Giới thiệu trang chủ
+  ☐ Header dịch vụ
+  ☐ Header ưu thế
+
+NEWS (9):
+  ☐ Dịch vụ #1: TTP Connect
+  ☐ Dịch vụ #2: TTP Data
+  ☐ Dịch vụ #3: TTP Cloud
+  ☐ Dịch vụ #4: TTP Infra
+  ☐ Dịch vụ #5: TTP Solution
+  ☐ Ưu thế #1: Hạ tầng hiện đại
+  ☐ Ưu thế #2: Kết nối toàn cầu
+  ☐ Ưu thế #3: Hiệu suất cao
+  ☐ Ưu thế #4: Bảo mật tuyệt đối
+
+HÌNH ẢNH CẦN UPLOAD:
+  ☐ Ảnh giới thiệu: 600x800px (1 cái)
+  ☐ Icons dịch vụ: 200x200px (5 cái - optional)
+  ☐ Icons ưu thế: 200x200px (4 cái - optional)
+
+===============================================
+
+THỜI GIAN ƯỚC TÍNH: 30-45 phút
+
+GHI CHÚ QUAN TRỌNG:
+- Nếu không có trường "Options", bỏ qua
+- Icons có thể upload sau
+- Nhớ check "Hiển thị" và "Nổi bật"
+- Slug tự động tạo từ tên
+
+===============================================
+

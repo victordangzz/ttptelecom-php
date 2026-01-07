@@ -1,0 +1,317 @@
+================================================================================
+DATA QUICK COPY - TRANG DỊCH VỤ (SERVICES PAGE)
+================================================================================
+File này chứa các đoạn text, JSON sẵn để COPY-PASTE nhanh vào Admin
+================================================================================
+
+================================================================================
+1. HERO TRANG DỊCH VỤ
+================================================================================
+Slogan:
+Dịch vụ hạ tầng số
+
+Tên:
+Dịch Vụ <span class="highlight">TTP Telecom</span>
+
+Mô tả:
+Giải pháp hạ tầng toàn diện cho doanh nghiệp
+
+Nội dung:
+Từ kết nối Internet, Data Center, Máy Chủ đến Hạ tầng IT - chúng tôi cung cấp trọn gói mọi thứ bạn cần để vận hành doanh nghiệp hiệu quả
+
+================================================================================
+2. TTP CONNECT - HEADER
+================================================================================
+Tên:
+TTP Connect – Internet & Truyền dẫn doanh nghiệp
+
+Mô tả:
+Kết nối ổn định, băng thông cao, tốc độ tối ưu
+
+================================================================================
+3. TTP CONNECT - DỊCH VỤ (3 items)
+================================================================================
+
+--- Item 1: Internet Leased Line ---
+Tên:
+Internet Leased Line / GIA / DIA
+
+Mô tả:
+Đường truyền Internet riêng biệt, tốc độ cao, băng thông ổn định phục vụ cho doanh nghiệp với cam kết SLA cao.
+
+Nội dung:
+Băng thông cam kết 1:1|Đường truyền riêng biệt|Hỗ trợ kỹ thuật 24/7|Cam kết SLA 99.9%
+
+--- Item 2: Dark Fiber ---
+Tên:
+Dark Fiber – Cáp quang trọn tuyến
+
+Mô tả:
+Cho thuê sợi quang (dark fiber) kết nối điểm-điểm cho doanh nghiệp có nhu cầu băng thông lớn.
+
+Nội dung:
+Cáp quang trọn tuyến|Không giới hạn băng thông|Độ trễ thấp|Bảo mật tuyệt đối
+
+--- Item 3: MPLS L2/L3 ---
+Tên:
+MPLS L2/L3
+
+Mô tả:
+Kết nối mạng riêng ảo MPLS cho doanh nghiệp có nhiều chi nhánh, văn phòng phân tán.
+
+Nội dung:
+Kết nối đa điểm|QoS đảm bảo|Mở rộng linh hoạt|Quản lý tập trung
+
+================================================================================
+4. TTP DATA - HEADER
+================================================================================
+Tên:
+TTP Data – Máy chủ & Trung tâm dữ liệu
+
+Mô tả:
+Hạ tầng máy chủ hiện đại với tiêu chuẩn cao nhất
+
+================================================================================
+5. TTP DATA - DỊCH VỤ (2 items)
+================================================================================
+
+--- Item 1: Colocation ---
+Tên:
+Colocation
+
+Slogan (Giá):
+Từ 3.500.000đ/U/tháng
+
+Mô tả:
+Đặt máy chủ tại Data Center tiêu chuẩn Tier III, hưởng trọn vẹn cơ sở hạ tầng với bảo mật cao nhất.
+
+Nội dung:
+Không gian rack tiêu chuẩn|Nguồn điện dự phòng N+1|Hệ thống làm mát chính xác|Bảo vệ vật lý 24/7
+
+--- Item 2: Dedicated Server ---
+Tên:
+Dedicated Server
+
+Slogan (Giá):
+Từ 5.000.000đ/tháng
+
+Mô tả:
+Máy chủ vật lý riêng biệt, hiệu năng cao, toàn quyền quản trị cho doanh nghiệp có nhu cầu tài nguyên lớn.
+
+Nội dung:
+CPU & RAM riêng biệt|Ổ cứng SSD NVMe tốc độ cao|Bandwidth không giới hạn|Full root access
+
+================================================================================
+6. TTP CLOUD - HEADER
+================================================================================
+Tên:
+TTP Cloud – Hạ tầng đám mây
+
+Mô tả:
+Linh hoạt, ổn định và mở rộng dễ dàng
+
+================================================================================
+7. TTP CLOUD - DỊCH VỤ (3 items)
+================================================================================
+
+--- Item 1: Cloud Server ---
+Tên:
+Cloud Server
+
+Mô tả:
+Máy chủ ảo đám mây linh hoạt, dễ dàng mở rộng theo nhu cầu.
+
+Nội dung (Specs):
+CPU: 1-32 vCPU|RAM: 1-128 GB|Storage: SSD NVMe
+
+--- Item 2: Cloud Storage ---
+Tên:
+Cloud Storage
+
+Mô tả:
+Lưu trữ đám mây an toàn với khả năng mở rộng không giới hạn.
+
+Nội dung:
+Block Storage: Có sẵn|Object Storage: Có sẵn|File Storage: Có sẵn
+
+--- Item 3: Backup & Disaster Recovery ---
+Tên:
+Backup & Disaster Recovery
+
+Mô tả:
+Giải pháp sao lưu và khôi phục dữ liệu đảm bảo an toàn.
+
+Nội dung:
+RPO: Linh hoạt|RTO: < 4 giờ|Retention: Tuỳ chọn
+
+================================================================================
+8. TTP INFRA - HEADER
+================================================================================
+Tên:
+TTP Infra – Hạ tầng CNTT
+
+Mô tả:
+Xây dựng hạ tầng công nghệ vững chắc cho doanh nghiệp
+
+================================================================================
+9. TTP INFRA - DỊCH VỤ (4 items)
+================================================================================
+
+--- Item 1: LAN / WAN / WLAN ---
+Tên:
+LAN / WAN / WLAN
+
+Mô tả:
+Thiết kế và triển khai hệ thống mạng LAN/WAN cho doanh nghiệp với hiệu suất cao.
+
+--- Item 2: Data Center ---
+Tên:
+Data Center
+
+Mô tả:
+Xây dựng và vận hành Data Center theo tiêu chuẩn quốc tế Tier III.
+
+--- Item 3: Firewall & NTTI ---
+Tên:
+Firewall & NTTI
+
+Mô tả:
+Giải pháp bảo mật mạng, tường lửa và phòng chống xâm nhập cho doanh nghiệp.
+
+--- Item 4: Vận hành & giám sát 24/7 ---
+Tên:
+Vận hành & giám sát 24/7
+
+Mô tả:
+Dịch vụ vận hành, giám sát và bảo trì hệ thống CNTT chuyên nghiệp.
+
+================================================================================
+10. DATA CENTER ADVANTAGES - ƯU ĐIỂM (4 items)
+================================================================================
+
+--- Item 1: Uptime ---
+Tên:
+Uptime 99,99%
+
+--- Item 2: Nguồn điện ---
+Tên:
+Nguồn điện dự phòng
+
+--- Item 3: Làm mát ---
+Tên:
+Làm mát chính xác
+
+--- Item 4: Bảo vệ ---
+Tên:
+Bảo vệ vật lý
+
+================================================================================
+11. WHY CHOOSE CLOUD - TẠI SAO CHỌN TTP CLOUD (4 items)
+================================================================================
+
+--- Item 1: Chi phí ---
+Tên:
+Chi phí tối ưu
+
+Mô tả:
+Chi trả theo sử dụng thực tế, không đầu tư phần cứng ban đầu.
+
+--- Item 2: Linh hoạt ---
+Tên:
+Mở rộng linh hoạt
+
+Mô tả:
+Tăng giảm tài nguyên theo nhu cầu, không gián đoạn dịch vụ.
+
+--- Item 3: Backup ---
+Tên:
+Backup tự động
+
+Mô tả:
+Hệ thống backup tự động, đảm bảo dữ liệu luôn an toàn.
+
+--- Item 4: Quản lý ---
+Tên:
+Quản lý đơn giản
+
+Mô tả:
+Giao diện quản trị trực quan, dễ sử dụng cho mọi đối tượng.
+
+================================================================================
+12. PROCESS - HEADER
+================================================================================
+Tên:
+Quy trình <span class="highlight">triển khai dự án</span>
+
+Slogan:
+Quy trình
+
+================================================================================
+13. PROCESS STEPS - QUY TRÌNH (4 bước)
+================================================================================
+
+--- Bước 1: Khảo sát ---
+Slogan (Số):
+1
+
+Tên:
+Khảo sát
+
+Mô tả:
+Tìm hiểu nhu cầu và đánh giá hiện trạng
+
+--- Bước 2: Thiết kế ---
+Slogan (Số):
+2
+
+Tên:
+Thiết kế
+
+Mô tả:
+Đề xuất giải pháp tối ưu phù hợp với yêu cầu
+
+--- Bước 3: Triển khai ---
+Slogan (Số):
+3
+
+Tên:
+Triển khai
+
+Mô tả:
+Thi công, lắp đặt và cấu hình hệ thống
+
+--- Bước 4: Bàn giao ---
+Slogan (Số):
+4
+
+Tên:
+Bàn giao
+
+Mô tả:
+Nghiệm thu và hướng dẫn sử dụng
+
+================================================================================
+14. CTA SECTION
+================================================================================
+Tên:
+Bạn đang cần một đối tác hạ tầng & công nghệ đáng tin cậy?
+
+Mô tả:
+Liên hệ TTP Telecom ngay hôm nay để được tư vấn miễn phí!
+
+Nội dung:
+Dù mới bắt đầu hay đang cần nâng cấp hệ thống hiện có với giải pháp phù hợp với chiến lược kinh doanh của bạn
+
+================================================================================
+LƯU Ý QUAN TRỌNG
+================================================================================
+1. Dấu | (pipe) dùng để phân tách các items trong list
+2. Format specs Cloud: "Label: Value|Label2: Value2"
+3. HTML tag <span class="highlight">...</span> dùng để highlight text
+4. Nhớ check checkbox "Hiển thị" và "Nổi bật" (nếu có)
+5. Đặt "Số thứ tự" đúng để sắp xếp thứ tự hiển thị
+
+================================================================================
+END OF FILE
+================================================================================
+

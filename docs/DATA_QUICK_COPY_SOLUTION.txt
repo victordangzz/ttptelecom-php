@@ -1,0 +1,215 @@
+================================================================================
+           DATA QUICK COPY - TRANG GIẢI PHÁP (SOLUTION PAGE)
+================================================================================
+
+Mục đích: Copy nhanh các đoạn text và JSON để paste vào admin panel
+
+
+================================================================================
+1. SOFTWARE OUTSOURCING CARDS - CONTENT (phân tách bằng |)
+================================================================================
+
+--- Card 1: Ứng dụng web ---
+Responsive design|SPA/SSR (React, Vue, Next.js)|RESTful API & GraphQL|Cloud-ready & scalable
+
+--- Card 2: Mobile app ---
+Flutter, React Native|Native iOS (Swift) / Android (Kotlin)|Push notification & offline mode|Payment integration
+
+--- Card 3: Hệ thống ERP, CRM ---
+Quản lý quy trình kinh doanh|Tích hợp đa hệ thống|Báo cáo & BI dashboard|Tùy biến theo ngành
+
+
+================================================================================
+2. DEV PROCESS STEPS - 5 STEPS
+================================================================================
+
+Step 1 - Name: Requirement
+Step 1 - Desc: Phân tích yêu cầu, lập kế hoạch
+
+Step 2 - Name: Design
+Step 2 - Desc: Thiết kế UI/UX, kiến trúc hệ thống
+
+Step 3 - Name: Development
+Step 3 - Desc: Sprint coding, code review, testing
+
+Step 4 - Name: Deployment
+Step 4 - Desc: CI/CD, triển khai lên môi trường thực tế
+
+Step 5 - Name: Maintenance
+Step 5 - Desc: Hỗ trợ & nâng cấp liên tục
+
+
+================================================================================
+3. DIGITAL TRANSFORMATION CARDS - CONTENT
+================================================================================
+
+--- Card 1: Tư vấn chiến lược ---
+Digital maturity assessment|Technology roadmap|Change management|ROI analysis
+
+--- Card 2: Tự động hóa quy trình ---
+Phân tích quy trình hiện tại|Xây dựng workflow tự động|Tích hợp AI/ML|Monitoring & optimization
+
+--- Card 3: Cloud Migration ---
+Cloud readiness assessment|Migration strategy & planning|Data migration|Post-migration support
+
+
+================================================================================
+4. INDUSTRY RETAIL CARDS
+================================================================================
+
+--- Card 1: Quản lý chuỗi ---
+Content:
+POS system, inventory management, multi-location|Real-time sync, báo cáo tập trung|Quản lý nhân viên, ca làm việc
+
+Options JSON:
+["POS tích hợp", "Quản lý kho", "Nhân sự real-time"]
+
+--- Card 2: Loyalty - Voucher ---
+Content:
+Tích điểm, đổi thưởng, voucher, QR/NFC tích hợp|Marketing automation, Phân tích hành vi khách hàng
+
+Options JSON:
+["Tích điểm", "Voucher", "CRM", "Marketing"]
+
+--- Card 3: AI Camera giám sát ---
+Content:
+Đếm người, phát hiện hành vi trộm cắp, Heat map|Customer journey, Age/gender detection, Queue management
+
+Options JSON:
+["Đếm người", "Heat map", "Alert AI", "Analytics"]
+
+
+================================================================================
+5. INDUSTRY HEALTHCARE CARDS
+================================================================================
+
+--- Card 1: Quản lý phòng khám, bệnh viện ---
+Content:
+HIS, Quản lý bệnh nhân, Khám chữa bệnh, tạ viện|DICOM, hồ sơ bệnh án điện tử, PACS, Quản lý kính dược, vật tư, hóa đơn BH YT
+
+Options JSON:
+["HIS", "EMR", "PACS", "BHYT"]
+
+--- Card 2: LMS - nền tảng đào tạo ---
+Content:
+Course management, video streaming, quiz/exam|Live class, discussion forum, Progress tracking, certificate, Mobile learning
+
+Options JSON:
+["Video course", "Live class", "Quiz/exam", "Certificate"]
+
+--- Card 3: AI hỗ trợ học tập ---
+Content:
+Personalized learning path, Tự động chấm bài, dựa vào quiz|Chatbot hỗ trợ học sinh, Phân tích tiến độ học tập
+
+Options JSON:
+["Personalized", "Auto grading", "Chatbot", "Analytics"]
+
+
+================================================================================
+6. TECH PLATFORM CARDS - OPTIONS JSON
+================================================================================
+
+--- Platform 1: MatD (primary) ---
+Slogan field: primary
+
+Options JSON:
+{
+  "features": [
+    "Quản lý từ xa",
+    "Tổng hợp dữ liệu",
+    "Camera thông minh",
+    "API mở"
+  ],
+  "highlight": "Ứng dụng: Chuỗi bán lẻ (FMCG), nhà máy sản xuất, kho logistics..."
+}
+
+--- Platform 2: FixHub (secondary) ---
+Slogan field: secondary
+
+Options JSON:
+{
+  "features": [
+    "Quản lý dịch vụ kỹ thuật",
+    "Theo dõi sự cố & bảo trì",
+    "Tích hợp đa hệ thống",
+    "Báo cáo & analytics"
+  ],
+  "highlight": "Ứng dụng: Doanh nghiệp dịch vụ, chuỗi cửa hàng, khu công nghiệp..."
+}
+
+
+================================================================================
+7. HERO SECTION (Static)
+================================================================================
+
+Slogan: SOLUTION
+Tên: Giải pháp công nghệ toàn diện cho doanh nghiệp
+Mô tả: Từ phát triển phần mềm outsourcing, chuyển đổi số đến các nền tảng công nghệ đặc thù cho từng ngành hàng. TTP Telecom đồng hành cùng bạn trong hành trình số hóa.
+
+
+================================================================================
+8. SOFTWARE OUTSOURCING HEADER (Static)
+================================================================================
+
+Slogan: OUTSOURCING
+Tên: Software Outsourcing
+Mô tả: Cung cấp dịch vụ thuê ngoài phát triển phần mềm chuyên nghiệp, đội ngũ dev giàu kinh nghiệm, quy trình chuẩn quốc tế.
+
+
+================================================================================
+9. DEV PROCESS HEADER (Static)
+================================================================================
+
+Slogan: PROCESS
+Tên: Quy trình phát triển chuẩn
+Mô tả: Quy trình Agile linh hoạt, minh bạch, đảm bảo chất lượng và tiến độ từng sprint.
+
+
+================================================================================
+10. DIGITAL TRANSFORMATION HEADER (Static)
+================================================================================
+
+Slogan: TRANSFORMATION
+Tên: Chuyển đổi số doanh nghiệp
+Mô tả: Tư vấn và triển khai các giải pháp chuyển đổi số toàn diện, từ quy trình nội bộ đến trải nghiệm khách hàng.
+
+
+================================================================================
+11. INDUSTRY SOLUTIONS HEADER (Static)
+================================================================================
+
+Slogan: INDUSTRY
+Tên: Giải pháp theo ngành
+Mô tả: Các giải pháp được tối ưu hóa cho từng lĩnh vực: Bán lẻ, Y tế, Giáo dục...
+
+
+================================================================================
+12. TECH PLATFORMS HEADER (Static)
+================================================================================
+
+Slogan: PLATFORMS
+Tên: Nền tảng công nghệ của TTP
+Mô tả: Các sản phẩm nền tảng độc quyền được phát triển và vận hành bởi TTP Telecom.
+
+
+================================================================================
+13. CTA SECTION (Static)
+================================================================================
+
+Tên: Bạn đã sẵn sàng chuyển đổi số?
+Mô tả: Hãy để TTP Telecom đồng hành cùng bạn.
+Nội dung: Liên hệ ngay hôm nay để được tư vấn chi tiết về các giải pháp phù hợp nhất cho doanh nghiệp của bạn.
+
+
+================================================================================
+                              END OF FILE
+================================================================================
+
+💡 LƯU Ý:
+- Dấu | dùng để phân tách features trong field Content
+- JSON phải dùng dấu ngoặc kép chuẩn "
+- Copy từ file này để tránh lỗi format
+- Check field "Hiển thị" sau khi nhập
+
+🚀 Good luck!
+
