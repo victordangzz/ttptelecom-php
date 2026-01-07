@@ -13,7 +13,6 @@ if (!$func->isGoogleSpeed()) {
   $css->set("fotorama/fotorama.css");
   $css->set("fotorama/fotorama-style.css");
   $css->set("magiczoomplus/magiczoomplus.css");
-  $css->set("mmenu/mmenu.css");
   $css->set("aos/aos.css");
 }
 $css->set("slick/slick.css");

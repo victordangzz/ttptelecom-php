@@ -10,16 +10,16 @@
   <?php
   include PAGES . LAYOUT . "seo.php";
   include PAGES . LAYOUT . "menu.php";
-  include PAGES . LAYOUT . "mmenu.php";
   // if ($source == 'index')
   //   include PAGES . LAYOUT . "slide.php";
   // else
   //   include PAGES . LAYOUT . "breadcrumb.php";
-  if ($source == 'index')
-    include PAGES . LAYOUT . "slide.php";
+  // if ($source == 'index')
+  //   include PAGES . LAYOUT . "slide.php";
+  // 
   ?>
 
-  <div class="<?= ($source == 'index') ? 'wrap-home' : 'wrap-content padding-top-bottom' ?>">
+  <div class="<?= ($source == 'index') ? 'wrap-home' : 'wrap-home' ?>">
     <?php include PAGES . $page . "_tpl.php"; ?>
   </div>
   <?php
