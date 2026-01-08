@@ -2,35 +2,27 @@
 if (!defined('SOURCES')) die("Error");
 
 /* =====================================================
-   QUERIES - TRANG GIỚI THIỆU
+   QUERIES - TRANG GIỚI THIỆU (REFACTORED V2)
+   Giảm số queries, gộp header vào content
    ===================================================== */
 
-/* Page Hero */
+/* Page Hero (Static) */
 $hero = $d->rawQueryOne("select slogan$lang, name$lang, desc$lang from #_static where type = ? limit 0,1", array('hero-about'));
 
-/* Company Profile */
+/* Company Profile (Static) */
 $profile = $d->rawQueryOne("select slogan$lang, name$lang, desc$lang, content$lang, options from #_static where type = ? limit 0,1", array('profile-about'));
 $profile_options = !empty($profile['options']) ? json_decode($profile['options'], true) : array();
 
-/* Vision */
-$vision = $d->rawQueryOne("select name$lang, desc$lang from #_static where type = ? limit 0,1", array('vision'));
+/* Vision & Mission (News - 2 items) */
+$vision_mission = $d->rawQuery("select slogan$lang, name$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id asc", array('vision-mission'));
 
-/* Mission */
-$mission = $d->rawQueryOne("select name$lang, desc$lang from #_static where type = ? limit 0,1", array('mission'));
-
-/* Core Values Header */
-$values_header = $d->rawQueryOne("select slogan$lang, name$lang, desc$lang from #_static where type = ? limit 0,1", array('header-values'));
-
-/* Core Values List */
+/* Core Values (News - bao gồm header + items) */
 $core_values = $d->rawQuery("select slogan$lang, name$lang, desc$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id asc", array('core-values'));
 
-/* Infrastructure Header */
-$infra_header = $d->rawQueryOne("select slogan$lang, name$lang, desc$lang from #_static where type = ? limit 0,1", array('header-infra'));
+/* Infrastructure (News - bao gồm header + items) */
+$infrastructure = $d->rawQuery("select slogan$lang, name$lang, desc$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id asc", array('infrastructure'));
 
-/* Infrastructure List */
-$infrastructure = $d->rawQuery("select name$lang, desc$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id asc", array('infrastructure'));
-
-/* CTA Section */
+/* CTA Section (Static) */
 $cta = $d->rawQueryOne("select name$lang, desc$lang, options from #_static where type = ? limit 0,1", array('cta-about'));
 $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : array();
 

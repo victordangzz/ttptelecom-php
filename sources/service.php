@@ -307,6 +307,100 @@
 	}
 	else
 	{
+	/* =====================================================
+	   QUERIES CHO TRANG SERVICES (REFACTORED)
+	   ===================================================== */
+
+	/* HERO SECTION */
+	$hero_services = $d->rawQueryOne("select name$lang, slogan$lang, desc$lang, content$lang from #_static where type = ? and find_in_set('hienthi',status) limit 0,1", array('hero-services'));
+
+		/* TTP CONNECT - Dịch vụ kết nối (header + items) */
+		$ttp_connect_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('ttp-connect-items'));
+		$ttp_connect_header = null;
+		$ttp_connect_items = array();
+		foreach ($ttp_connect_all as $item) {
+			if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+				$ttp_connect_header = $item;
+			} else {
+				$ttp_connect_items[] = $item;
+			}
+		}
+
+		/* TTP DATA - Dịch vụ Data Center (header + items) */
+		$ttp_data_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('ttp-data-items'));
+		$ttp_data_header = null;
+		$ttp_data_items = array();
+		foreach ($ttp_data_all as $item) {
+			if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+				$ttp_data_header = $item;
+			} else {
+				$ttp_data_items[] = $item;
+			}
+		}
+
+		/* DATA CENTER ADVANTAGES (header + items) */
+		$advantages_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('data-center-advantages'));
+		$advantages_header = null;
+		$advantages_items = array();
+		foreach ($advantages_all as $item) {
+			if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+				$advantages_header = $item;
+			} else {
+				$advantages_items[] = $item;
+			}
+		}
+
+		/* TTP CLOUD - Dịch vụ Cloud (header + items) */
+		$ttp_cloud_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('ttp-cloud-items'));
+		$ttp_cloud_header = null;
+		$ttp_cloud_items = array();
+		foreach ($ttp_cloud_all as $item) {
+			if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+				$ttp_cloud_header = $item;
+			} else {
+				$ttp_cloud_items[] = $item;
+			}
+		}
+
+		/* WHY CHOOSE CLOUD (header + items) */
+		$why_cloud_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('why-choose-cloud'));
+		$why_cloud_header = null;
+		$why_cloud_items = array();
+		foreach ($why_cloud_all as $item) {
+			if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+				$why_cloud_header = $item;
+			} else {
+				$why_cloud_items[] = $item;
+			}
+		}
+
+		/* TTP INFRA - Dịch vụ hạ tầng (header + items) */
+		$ttp_infra_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('ttp-infra-items'));
+		$ttp_infra_header = null;
+		$ttp_infra_items = array();
+		foreach ($ttp_infra_all as $item) {
+			if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+				$ttp_infra_header = $item;
+			} else {
+				$ttp_infra_items[] = $item;
+			}
+		}
+
+		/* PROCESS STEPS - Quy trình triển khai (header + steps) */
+		$process_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('process-steps'));
+		$process_header = null;
+		$process_steps = array();
+		foreach ($process_all as $item) {
+			if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+				$process_header = $item;
+			} else {
+				$process_steps[] = $item;
+			}
+		}
+
+	/* CTA SECTION */
+	$cta_services = $d->rawQueryOne("select name$lang, desc$lang, content$lang from #_static where type = ? and find_in_set('hienthi',status) limit 0,1", array('cta-services'));
+
 		/* SEO */
 		$seopage = $d->rawQueryOne("select * from #_seopage where type = ? limit 0,1",array($type));
 		$seo->set('h1',$titleMain);
@@ -331,23 +425,6 @@
 				$seo->set('photo:type',$imgJson['m']);
 			}
 		}
-
-		/* Lấy tất cả bài viết */
-		$where = "";
-		$where = "type = ? and find_in_set('hienthi',status)";
-		$params = array($type);
-
-		$curPage = $getPage;
-		$perPage = (isset($optsetting['tt']) && $optsetting['tt']!='') ? htmlspecialchars($optsetting['tt']) : 12;
-		$startpoint = ($curPage * $perPage) - $perPage;
-		$limit = " limit ".$startpoint.",".$perPage;
-		$sql = "select id, name$lang, slugvi, slugen, photo, date_created, desc$lang from #_news where $where order by numb,id desc $limit";
-		$news = $d->rawQuery($sql,$params);
-		$sqlNum = "select count(*) as 'num' from #_news where $where order by numb,id desc";
-		$count = $d->rawQueryOne($sqlNum,$params);
-		$total = (!empty($count)) ? $count['num'] : 0;
-		$url = $func->getCurrentPageURL();
-		$paging = $func->pagination($total,$perPage,$curPage,$url);
 
 		/* breadCrumbs */
 		if(!empty($titleMain)) $breadcr->set($com,$titleMain);

@@ -5,31 +5,20 @@ require_once 'type/config-type-news.php';
 require_once 'type/config-type-static.php';
 require_once 'type/config-type-photo.php';
 
-/* Config cho trang chủ */
-require_once 'type-static-homepage.php';
-require_once 'type-news-homepage.php';
-
-/* Config cho trang About */
-require_once 'type-static-about.php';
-require_once 'type-news-about.php';
-
-/* Config cho trang Services */
-require_once 'type-static-services.php';
-require_once 'type-news-services.php';
-
-/* Config cho trang Solution */
-require_once 'type-static-solution.php';
-require_once 'type-news-solution.php';
+/* Config cho các trang (gộp static + news) */
+require_once 'type-homepage.php';   // Homepage - All modules
+require_once 'type-about.php';      // About - All modules
+require_once 'type-services.php';   // Services - All modules
+require_once 'type-solution.php';   // Solution - All modules
 
 /* Seo page */
 $config['seopage']['page'] = array(
-  "trang-chu" => trangchu,
-  "tin-tuc" => tintuc,
-  "huong-dan-su-dung" => "Hướng dẫn sử dụng",
-  "huong-dan-dang-ky-tho" => "Hướng dẫn đăng ký thợ",
-  "chien-dich-khuyen-mai" => "Chiến dịch khuyến mãi",
+  "trang-chu" => "Trang chủ",
+  "gioi-thieu" => "Giới thiệu",
   "dich-vu" => "Dịch vụ",
-  "lien-he" => lienhe
+  "giai-phap" => "Giải pháp",
+  "tin-tuc" => "Tin tức",
+  "lien-he" => "Liên hệ"
 );
 $config['seopage']['width'] = 300;
 $config['seopage']['height'] = 200;

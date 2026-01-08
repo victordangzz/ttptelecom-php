@@ -1,0 +1,6 @@
+::1(admin)--update--static([["","type","=","hero-trangchu"]]) (11:50:18 08/01/2026)
+::1(admin)--update--news([["","id","=","105"]]) (11:50:53 08/01/2026)
+::1(admin)--update--news([["","id","=","105"],["AND","type","=","about-trangchu"]]) (11:51:00 08/01/2026)
+::1(admin)--update--seopage([["","id","=","7"]]) (16:07:43 08/01/2026)
+::1(admin)--update--seopage([["","type","=","trang-chu"]]) (16:07:50 08/01/2026)
+::1(admin)--update--seopage([["","type","=","trang-chu"]]) (16:07:50 08/01/2026)
