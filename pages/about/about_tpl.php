@@ -151,37 +151,31 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
 <?php } ?>
 
 <!-- Vision & Mission -->
-<?php if (!empty($vision) || !empty($mission)) { ?>
+<?php if (!empty($vision_mission)) { ?>
   <section class="vision-mission">
     <div class="container">
       <div class="vm-grid">
-        <?php if (!empty($vision)) { ?>
+        <?php foreach ($vision_mission as $item) { 
+          $icon_type = strtolower($item['slogan' . $lang]);
+        ?>
           <div class="vm-card">
             <div class="vm-icon">
+              <?php if ($icon_type == 'vision') { ?>
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
-            </div>
-            <h3 class="vm-title"><?= $vision['name' . $lang] ?></h3>
-            <p class="vm-description">
-              <?= $vision['desc' . $lang] ?>
-            </p>
-          </div>
-        <?php } ?>
-
-        <?php if (!empty($mission)) { ?>
-          <div class="vm-card">
-            <div class="vm-icon">
+              <?php } else { ?>
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M12 16v-4"></path>
                 <path d="M12 8h.01"></path>
               </svg>
+              <?php } ?>
             </div>
-            <h3 class="vm-title"><?= $mission['name' . $lang] ?></h3>
+            <h3 class="vm-title"><?= $item['name' . $lang] ?></h3>
             <p class="vm-description">
-              <?= $mission['desc' . $lang] ?>
+              <?= $item['desc' . $lang] ?>
             </p>
           </div>
         <?php } ?>
@@ -191,30 +185,38 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
 <?php } ?>
 
 <!-- Core Values -->
-<?php if (!empty($core_values)) { ?>
+<?php if (!empty($core_values)) { 
+  // Tách header và items
+  $values_header = null;
+  $value_items = array();
+  
+  foreach ($core_values as $item) {
+    if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+      $values_header = $item;
+    } else {
+      $value_items[] = $item;
+    }
+  }
+?>
   <section class="core-values">
     <div class="container">
-      <?php if (!empty($values_header)) { ?>
+      <?php if ($values_header) { ?>
         <div class="section-header">
           <div class="section-badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <span><?= $values_header['slogan' . $lang] ?></span>
+            <span><?= $values_header['name' . $lang] ?></span>
           </div>
 
           <h2 class="section-title">
-            <?= $values_header['name' . $lang] ?>
-          </h2>
-
-          <p class="section-description">
             <?= $values_header['desc' . $lang] ?>
-          </p>
+          </h2>
         </div>
       <?php } ?>
 
       <div class="values-grid">
-        <?php foreach ($core_values as $value) { ?>
+        <?php foreach ($value_items as $value) { ?>
           <div class="value-card">
             <div class="value-number"><?= $value['slogan' . $lang] ?></div>
             <div class="value-icon">
@@ -242,10 +244,22 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
 <?php } ?>
 
 <!-- Infrastructure -->
-<?php if (!empty($infrastructure)) { ?>
+<?php if (!empty($infrastructure)) { 
+  // Tách header và items
+  $infra_header = null;
+  $infra_items = array();
+  
+  foreach ($infrastructure as $item) {
+    if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+      $infra_header = $item;
+    } else {
+      $infra_items[] = $item;
+    }
+  }
+?>
   <section class="infrastructure">
     <div class="container">
-      <?php if (!empty($infra_header)) { ?>
+      <?php if ($infra_header) { ?>
         <div class="section-header">
           <div class="section-badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -254,21 +268,17 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
               <line x1="6" y1="6" x2="6.01" y2="6"></line>
               <line x1="6" y1="18" x2="6.01" y2="18"></line>
             </svg>
-            <span><?= $infra_header['slogan' . $lang] ?></span>
+            <span><?= $infra_header['name' . $lang] ?></span>
           </div>
 
           <h2 class="section-title">
-            <?= $infra_header['name' . $lang] ?>
-          </h2>
-
-          <p class="section-description">
             <?= $infra_header['desc' . $lang] ?>
-          </p>
+          </h2>
         </div>
       <?php } ?>
 
       <div class="infra-grid">
-        <?php foreach ($infrastructure as $infra) { ?>
+        <?php foreach ($infra_items as $infra) { ?>
           <div class="infra-card">
             <div class="infra-image">
               <?php if (!empty($infra['photo'])) { ?>

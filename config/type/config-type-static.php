@@ -24,24 +24,13 @@ $config['static'][$nametype]['title_main'] = "Slogan hoạt động";
 $config['static'][$nametype]['check'] = array("hienthi" => hienthi);
 $config['static'][$nametype]['name'] = true;
 
-/* SLOGAN DỊCH VỤ */ 
-$nametype = "slogan_dv";
-$config['static'][$nametype]['title_main'] = "Slogan dịch vụ";
-$config['static'][$nametype]['check'] = array("hienthi" => hienthi);
-$config['static'][$nametype]['name'] = true;
-
-/* SLOGAN HỆ SINH THÁI */ 
-$nametype = "slogan_hst";
-$config['static'][$nametype]['title_main'] = "Slogan hệ sinh thái";
-$config['static'][$nametype]['check'] = array("hienthi" => hienthi);
-$config['static'][$nametype]['name'] = true;
-
-/* SLOGAN TIÊU CHÍ */
-$nametype = "slogan_tc";
-$config['static'][$nametype]['title_main'] = "Slogan tiêu chí";
-$config['static'][$nametype]['check'] = array("hienthi" => hienthi);
-$config['static'][$nametype]['name'] = true;
-$config['static'][$nametype]['desc'] = true;
+/* ===== CÁC MODULE CŨ - ĐÃ XÓA ===== */
+/*
+$nametype = "slogan_dv"; // Slogan dịch vụ
+$nametype = "slogan_hst"; // Slogan hệ sinh thái
+$nametype = "slogan_tc"; // Slogan tiêu chí
+// ... (đã comment out)
+*/
 
 /* Slogan */
 $nametype = "slogan";

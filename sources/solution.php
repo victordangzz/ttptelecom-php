@@ -2,202 +2,101 @@
 if (!defined('SOURCES')) die("Error");
 
 /* =====================================================
-   DATA RETRIEVAL - TRANG GIẢI PHÁP
-   File: sources/solution.php
-   Route: giai-phap (từ router/web.php)
+   QUERIES CHO TRANG SOLUTION (REFACTORED)
    ===================================================== */
 
-/* SEO - Thông tin SEO của trang */
-$seo->set('type', 'article');
-$favicon = $cache->get("SELECT photo FROM #_photo WHERE type = ? AND act = ? LIMIT 0,1", array('favicon', 'photo_static'), 'fetch', 7200);
-$seo->set('favicon', $favicon['photo']);
+/* HERO SECTION */
+$hero_solution = $d->rawQueryOne("select name$lang, slogan$lang, desc$lang, content$lang from #_static where type = ? and find_in_set('hienthi',status) limit 0,1", array('hero-solution'));
+
+/* SOFTWARE OUTSOURCING (header + items) */
+$outsourcing_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('outsourcing-solutions'));
+$outsourcing_header = null;
+$outsourcing_solutions = array();
+foreach ($outsourcing_all as $item) {
+	if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+		$outsourcing_header = $item;
+	} else {
+		$outsourcing_solutions[] = $item;
+	}
+}
+
+/* DEV PROCESS STEPS (header + steps) */
+$dev_process_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('dev-process-steps'));
+$dev_process_header = null;
+$dev_process_steps = array();
+foreach ($dev_process_all as $item) {
+	if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+		$dev_process_header = $item;
+	} else {
+		$dev_process_steps[] = $item;
+	}
+}
+
+/* DIGITAL TRANSFORMATION (header + items) */
+$digital_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('digital-solutions'));
+$digital_header = null;
+$digital_solutions = array();
+foreach ($digital_all as $item) {
+	if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+		$digital_header = $item;
+	} else {
+		$digital_solutions[] = $item;
+	}
+}
+
+/* INDUSTRY SOLUTIONS - RETAIL (header + items) */
+$industry_retail_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, options from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('industry-retail'));
+$industry_header = null;
+$industry_retail = array();
+foreach ($industry_retail_all as $item) {
+	if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+		$industry_header = $item;
+	} else {
+		$industry_retail[] = $item;
+	}
+}
+
+/* INDUSTRY SOLUTIONS - HEALTHCARE (items only, share header with retail) */
+$industry_healthcare = $d->rawQuery("select name$lang, desc$lang, content$lang, options from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('industry-healthcare'));
+
+/* TECH PLATFORMS (header + items) */
+$tech_platforms_all = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, options from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('tech-platforms'));
+$tech_platforms_header = null;
+$tech_platforms = array();
+foreach ($tech_platforms_all as $item) {
+	if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+		$tech_platforms_header = $item;
+	} else {
+		$tech_platforms[] = $item;
+	}
+}
+
+/* CTA SECTION */
+$cta_solution = $d->rawQueryOne("select name$lang, desc$lang, content$lang from #_static where type = ? and find_in_set('hienthi',status) limit 0,1", array('cta-solution'));
+
+/* SEO */
+$seopage = $d->rawQueryOne("select * from #_seopage where type = ? limit 0,1", array('giai-phap'));
+$seo->set('h1', $seopage['title' . $seolang]);
+if (!empty($seopage['title' . $seolang])) $seo->set('title', $seopage['title' . $seolang]);
+else $seo->set('title', $titleMain);
+if (!empty($seopage['keywords' . $seolang])) $seo->set('keywords', $seopage['keywords' . $seolang]);
+if (!empty($seopage['description' . $seolang])) $seo->set('description', $seopage['description' . $seolang]);
 $seo->set('url', $func->getPageURL());
-$title_crumb = "Giải pháp";
-$seo->set('title', $title_crumb);
-$seo->set('keywords', 'giải pháp, phần mềm, outsourcing, chuyển đổi số, digital transformation');
-$seo->set('description', 'Giải pháp công nghệ toàn diện từ TTP Telecom: Phát triển phần mềm, Chuyển đổi số, Giải pháp ngành');
-$seo->set('photo', $func->getImgSize('assets/images/default-share.jpg', '1200x630x1'));
+$imgJson = (!empty($seopage['options'])) ? json_decode($seopage['options'], true) : null;
+if (!empty($seopage['photo'])) {
+	if (empty($imgJson) || ($imgJson['p'] != $seopage['photo'])) {
+		$imgJson = $func->getImgSize($seopage['photo'], UPLOAD_SEOPAGE_L . $seopage['photo']);
+		$seo->updateSeoDB(json_encode($imgJson), 'seopage', $seopage['id']);
+	}
+	if (!empty($imgJson)) {
+		$seo->set('photo', $configBase . THUMBS . '/' . $imgJson['w'] . 'x' . $imgJson['h'] . 'x2/' . UPLOAD_SEOPAGE_L . $seopage['photo']);
+		$seo->set('photo:width', $imgJson['w']);
+		$seo->set('photo:height', $imgJson['h']);
+		$seo->set('photo:type', $imgJson['m']);
+	}
+}
 
-/* Breadcrumbs */
-$breadcr->set($title_crumb, $func->getPageURL());
-$breadcr->out();
-
-/* =====================================================
-   1. SOLUTION HERO - BANNER
-   ===================================================== */
-$hero_solution = $cache->get(
-    "SELECT namevi, sloganvi, descvi, contentvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('hero-solution', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   2. SOFTWARE OUTSOURCING - HEADER
-   ===================================================== */
-$outsourcing_header = $cache->get(
-    "SELECT namevi, descvi, photo 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('outsourcing-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   3. SOFTWARE OUTSOURCING - SOLUTIONS
-   ===================================================== */
-$outsourcing_solutions = $cache->get(
-    "SELECT namevi, sloganvi, descvi, contentvi 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('outsourcing-solutions'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   4. DEV PROCESS - HEADER
-   ===================================================== */
-$dev_process_header = $cache->get(
-    "SELECT namevi, sloganvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('dev-process-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   5. DEV PROCESS STEPS
-   ===================================================== */
-$dev_process_steps = $cache->get(
-    "SELECT namevi, sloganvi, descvi 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('dev-process-steps'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   6. DIGITAL TRANSFORMATION - HEADER
-   ===================================================== */
-$digital_header = $cache->get(
-    "SELECT namevi, descvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('digital-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   7. DIGITAL TRANSFORMATION - SOLUTIONS
-   ===================================================== */
-$digital_solutions = $cache->get(
-    "SELECT namevi, sloganvi, descvi, contentvi 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('digital-solutions'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   8. INDUSTRY SOLUTIONS - HEADER
-   ===================================================== */
-$industry_header = $cache->get(
-    "SELECT namevi, sloganvi, descvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('industry-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   9. INDUSTRY SOLUTIONS - RETAIL
-   ===================================================== */
-$industry_retail = $cache->get(
-    "SELECT namevi, descvi, contentvi, options 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('industry-retail'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   10. INDUSTRY SOLUTIONS - HEALTHCARE
-   ===================================================== */
-$industry_healthcare = $cache->get(
-    "SELECT namevi, descvi, contentvi, options 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('industry-healthcare'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   11. TECH PLATFORMS - HEADER
-   ===================================================== */
-$tech_platforms_header = $cache->get(
-    "SELECT namevi, sloganvi, descvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('tech-platforms-header', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   12. TECH PLATFORMS
-   ===================================================== */
-$tech_platforms = $cache->get(
-    "SELECT namevi, sloganvi, descvi, contentvi, options 
-     FROM #_news 
-     WHERE type = ? AND status != ''
-     AND find_in_set('hienthi', status)
-     ORDER BY numb ASC, id DESC",
-    array('tech-platforms'),
-    'result',
-    7200
-);
-
-/* =====================================================
-   13. CTA SECTION
-   ===================================================== */
-$cta_solution = $cache->get(
-    "SELECT namevi, descvi, contentvi 
-     FROM #_static 
-     WHERE type = ? AND status = ? AND find_in_set('hienthi', status)
-     LIMIT 0,1",
-    array('cta-solution', 'hienthi'),
-    'fetch',
-    7200
-);
-
-/* =====================================================
-   RENDER VIEW - HIỂN THỊ TEMPLATE
-   ===================================================== */
-$template = "solution/solution";
+/* breadCrumbs */
+if (!empty($titleMain)) $breadcr->set($com, $titleMain);
+$breadcrumbs = $breadcr->get();
+?>
