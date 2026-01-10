@@ -3,18 +3,20 @@
   <div class="container">
     <div class="header-content">
       <!-- Logo -->
-      <a href="<?= ASSET ?>" class="logo" title="<?= $setting['name' . $lang] ?? 'TTP Telecom' ?>">
-        <span class="logo-ttp">TTP</span>
-        <span class="logo-telecom">Telecom</span>
-      </a>
 
+      <a class="logo" href="<?= $config['website']['url'] ?>" title="<?= $setting['name' . $lang] ?? 'Foresta Đắk Nông' ?>">
+        <img onerror="this.src='<?= THUMBS ?>/120x120x1/assets/images/noimage.png';"
+          src="<?= THUMBS ?>/120x120x1/<?= UPLOAD_PHOTO_L . $logo['photo'] ?>"
+          alt="<?= $setting['name' . $lang] ?>"
+          title="<?= $setting['name' . $lang] ?>" />
+      </a>
       <!-- Desktop Navigation -->
       <nav class="nav-desktop">
         <a href="<?= ASSET ?>" class="nav-link <?= (!isset($source) || $source == '' || $source == 'index') ? 'active' : '' ?>">Trang Chủ</a>
-        <a href="<?= ASSET ?>gioi-thieu" class="nav-link <?= (isset($source) && $source == 'gioi-thieu') ? 'active' : '' ?>">Giới Thiệu</a>
         <a href="<?= ASSET ?>dich-vu" class="nav-link <?= (isset($source) && $source == 'dich-vu') ? 'active' : '' ?>">Dịch Vụ</a>
+
+        <a href="<?= ASSET ?>gioi-thieu" class="nav-link <?= (isset($source) && $source == 'gioi-thieu') ? 'active' : '' ?>">Giới Thiệu</a>
         <a href="<?= ASSET ?>giai-phap" class="nav-link <?= (isset($source) && $source == 'giai-phap') ? 'active' : '' ?>">Giải Pháp</a>
-        <a href="<?= ASSET ?>lien-he" class="nav-link <?= (isset($source) && $source == 'lien-he') ? 'active' : '' ?>">Liên Hệ</a>
       </nav>
 
       <!-- CTA Button -->
@@ -33,10 +35,9 @@
   <div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-nav">
       <a href="<?= ASSET ?>" class="mobile-nav-link <?= (!isset($source) || $source == '' || $source == 'index') ? 'active' : '' ?>">Trang Chủ</a>
-      <a href="<?= ASSET ?>gioi-thieu" class="mobile-nav-link <?= (isset($source) && $source == 'gioi-thieu') ? 'active' : '' ?>">Giới Thiệu</a>
       <a href="<?= ASSET ?>dich-vu" class="mobile-nav-link <?= (isset($source) && $source == 'dich-vu') ? 'active' : '' ?>">Dịch Vụ</a>
+      <a href="<?= ASSET ?>gioi-thieu" class="mobile-nav-link <?= (isset($source) && $source == 'gioi-thieu') ? 'active' : '' ?>">Giới Thiệu</a>
       <a href="<?= ASSET ?>giai-phap" class="mobile-nav-link <?= (isset($source) && $source == 'giai-phap') ? 'active' : '' ?>">Giải Pháp</a>
-      <a href="<?= ASSET ?>lien-he" class="mobile-nav-link <?= (isset($source) && $source == 'lien-he') ? 'active' : '' ?>">Liên Hệ</a>
       <button class="btn-cta mobile" onclick="window.location.href='<?= ASSET ?>lien-he'">Liên Hệ Ngay</button>
     </nav>
   </div>

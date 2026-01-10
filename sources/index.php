@@ -20,6 +20,29 @@ $services = $d->rawQuery("select name$lang, slogan$lang, desc$lang, photo, slug$
 // Bao gồm cả header (slogan="HEADER") và feature items
 $features = $d->rawQuery("select name$lang, slogan$lang, desc$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('uu-the'));
 
+/* DỰ ÁN TIÊU BIỂU - Projects (News - header + projects) */
+// Bao gồm cả header (slogan="HEADER") và project items
+$projects = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('du-an-tieu-bieu'));
+
+/* ĐỐI TÁC - Partners (News - header + partner logos) */
+// Bao gồm cả header (slogan="HEADER") và partner items
+$partners = $d->rawQuery("select name$lang, slogan$lang, photo from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('doi-tac'));
+
+/* NỀN TẢNG CÔNG NGHỆ - Tech Platform (News - header + platforms) */
+// Bao gồm cả header (slogan="HEADER") và platform items
+$tech_platforms = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang, photo, options from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('nen-tang-cong-nghe'));
+
+/* HẠ TẦNG VẬT LÝ - Infrastructure (News - header + infrastructure items) */
+// Bao gồm cả header (slogan="HEADER") và infrastructure items
+$infrastructures = $d->rawQuery("select name$lang, slogan$lang, desc$lang, options from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('ha-tang-vung-chac'));
+
+/* THẾ MẠNH TTP - Strengths (News - header + strength stats) */
+// Bao gồm cả header (slogan="HEADER") và strength items
+$strengths = $d->rawQuery("select name$lang, slogan$lang, desc$lang, content$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id desc", array('the-manh-ttp'));
+
+/* CALL TO ACTION - CTA Contact (Static) */
+$cta_contact = $d->rawQueryOne("select name$lang, slogan$lang, desc$lang, options from #_static where type = ? and find_in_set('hienthi',status) limit 0,1", array('cta-lienhe'));
+
 /* =====================================================
    QUERIES CŨ (Giữ lại nếu cần dùng)
    ===================================================== */

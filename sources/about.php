@@ -9,9 +9,18 @@ if (!defined('SOURCES')) die("Error");
 /* Page Hero (Static) */
 $hero = $d->rawQueryOne("select slogan$lang, name$lang, desc$lang from #_static where type = ? limit 0,1", array('hero-about'));
 
-/* Company Profile (Static) */
+/* Company Profile (Static) - GIỮ LẠI để backward compatible */
 $profile = $d->rawQueryOne("select slogan$lang, name$lang, desc$lang, content$lang, options from #_static where type = ? limit 0,1", array('profile-about'));
 $profile_options = !empty($profile['options']) ? json_decode($profile['options'], true) : array();
+
+/* About Intro - GIỚI THIỆU CÔNG TY (Static - có ảnh) */
+$about_intro = $d->rawQueryOne("select slogan$lang, name$lang, desc$lang, content$lang, photo from #_static where type = ? and find_in_set('hienthi',status) limit 0,1", array('about-intro'));
+
+/* About Stats - SỐ LIỆU NỔI BẬT (News - bao gồm header + stats) */
+$about_stats = $d->rawQuery("select slogan$lang, name$lang, desc$lang, options from #_news where type = ? and find_in_set('hienthi',status) order by numb,id asc", array('about-stats'));
+
+/* Core Values Image - ẢNH ĐỘI NGŨ (Static) */
+$core_values_image = $d->rawQueryOne("select photo from #_static where type = ? and find_in_set('hienthi',status) limit 0,1", array('core-values-image'));
 
 /* Vision & Mission (News - 2 items) */
 $vision_mission = $d->rawQuery("select slogan$lang, name$lang, desc$lang from #_news where type = ? and find_in_set('hienthi',status) order by numb,id asc", array('vision-mission'));

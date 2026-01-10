@@ -1323,6 +1323,362 @@ PHP_FRAMEWORK.DoSearchCustom = function () {
   }
 };
 
+/* Services Slider */
+PHP_FRAMEWORK.ServicesSlider = function () {
+  const slider = document.getElementById('services-slider');
+  if (!slider) return;
+
+  const prevBtn = slider.closest('.services-slider-wrapper').querySelector('.slider-nav-prev');
+  const nextBtn = slider.closest('.services-slider-wrapper').querySelector('.slider-nav-next');
+  const cards = slider.querySelectorAll('.service-card');
+  
+  if (!prevBtn || !nextBtn || cards.length === 0) return;
+
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let currentIndex = 0;
+
+  // Tính toán kích thước thực tế của card + gap
+  const getCardWidth = () => {
+    if (cards.length === 0) return 0;
+    const firstCard = cards[0];
+    const cardRect = firstCard.getBoundingClientRect();
+    // Lấy gap từ computed style (có thể là px hoặc rem)
+    const gapValue = getComputedStyle(slider).gap;
+    // Chuyển đổi gap sang px nếu cần
+    let gap = 16; // default 16px
+    if (gapValue) {
+      const gapMatch = gapValue.match(/(\d+\.?\d*)/);
+      if (gapMatch) {
+        const gapNum = parseFloat(gapMatch[1]);
+        // Nếu là rem, chuyển sang px (1rem = 16px)
+        if (gapValue.includes('rem')) {
+          gap = gapNum * 16;
+        } else {
+          gap = gapNum;
+        }
+      }
+    }
+    return cardRect.width + gap;
+  };
+
+  // Cập nhật trạng thái nút
+  const updateButtons = () => {
+    const cardWidth = getCardWidth();
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    
+    if (slider.scrollLeft <= 0) {
+      prevBtn.disabled = true;
+      currentIndex = 0;
+    } else {
+      prevBtn.disabled = false;
+    }
+
+    if (slider.scrollLeft >= maxScroll - 1) {
+      nextBtn.disabled = true;
+      currentIndex = cards.length - 1;
+    } else {
+      nextBtn.disabled = false;
+    }
+  };
+
+  // Trượt đến vị trí cụ thể
+  const scrollToIndex = (index, smooth = true) => {
+    const cardWidth = getCardWidth();
+    const targetScroll = index * cardWidth;
+    slider.scrollTo({
+      left: targetScroll,
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+    currentIndex = index;
+  };
+
+  // Trượt theo số lượng card
+  const scrollByCards = (direction) => {
+    const cardWidth = getCardWidth();
+    const currentScroll = slider.scrollLeft;
+    const scrollAmount = cardWidth;
+    
+    let targetScroll;
+    if (direction === 'next') {
+      targetScroll = currentScroll + scrollAmount;
+    } else {
+      targetScroll = currentScroll - scrollAmount;
+    }
+
+    slider.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    });
+  };
+
+  // Xử lý nút Prev
+  prevBtn.addEventListener('click', () => {
+    scrollByCards('prev');
+  });
+
+  // Xử lý nút Next
+  nextBtn.addEventListener('click', () => {
+    scrollByCards('next');
+  });
+
+  // Xử lý scroll để cập nhật nút
+  slider.addEventListener('scroll', () => {
+    updateButtons();
+  });
+
+  // Xử lý resize để cập nhật lại
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateButtons();
+    }, 250);
+  });
+
+  // Drag để trượt
+  slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    const rect = slider.getBoundingClientRect();
+    startX = e.pageX - rect.left;
+    scrollLeft = slider.scrollLeft;
+    slider.style.cursor = 'grabbing';
+    slider.style.userSelect = 'none';
+    e.preventDefault();
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDragging = false;
+    slider.style.cursor = 'grab';
+    slider.style.userSelect = '';
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDragging = false;
+    slider.style.cursor = 'grab';
+    slider.style.userSelect = '';
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const rect = slider.getBoundingClientRect();
+    const x = e.pageX - rect.left;
+    const walk = (x - startX) * 2; // Tốc độ kéo
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  // Scroll wheel ngang
+  slider.addEventListener('wheel', (e) => {
+    // Chỉ xử lý scroll ngang hoặc khi giữ Shift để scroll ngang
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
+      e.preventDefault();
+      const cardWidth = getCardWidth();
+      const scrollAmount = e.deltaX || e.deltaY;
+      slider.scrollLeft += scrollAmount;
+    }
+  }, { passive: false });
+
+  // Touch events cho mobile
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].pageX - slider.offsetLeft;
+    touchScrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('touchmove', (e) => {
+    if (!e.touches[0]) return;
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - touchStartX) * 2;
+    slider.scrollLeft = touchScrollLeft - walk;
+  });
+
+  // Khởi tạo
+  slider.style.cursor = 'grab';
+  updateButtons();
+};
+
+/* Features Slider */
+PHP_FRAMEWORK.FeaturesSlider = function () {
+  const slider = document.getElementById('features-slider');
+  if (!slider) return;
+
+  const prevBtn = slider.closest('.features-slider-wrapper').querySelector('.slider-nav-prev');
+  const nextBtn = slider.closest('.features-slider-wrapper').querySelector('.slider-nav-next');
+  const cards = slider.querySelectorAll('.feature-card');
+  
+  if (!prevBtn || !nextBtn || cards.length === 0) return;
+
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let currentIndex = 0;
+
+  // Tính toán kích thước thực tế của card + gap
+  const getCardWidth = () => {
+    if (cards.length === 0) return 0;
+    const firstCard = cards[0];
+    const cardRect = firstCard.getBoundingClientRect();
+    // Lấy gap từ computed style (có thể là px hoặc rem)
+    const gapValue = getComputedStyle(slider).gap;
+    // Chuyển đổi gap sang px nếu cần
+    let gap = 24; // default 24px (1.5rem)
+    if (gapValue) {
+      const gapMatch = gapValue.match(/(\d+\.?\d*)/);
+      if (gapMatch) {
+        const gapNum = parseFloat(gapMatch[1]);
+        // Nếu là rem, chuyển sang px (1rem = 16px)
+        if (gapValue.includes('rem')) {
+          gap = gapNum * 16;
+        } else {
+          gap = gapNum;
+        }
+      }
+    }
+    return cardRect.width + gap;
+  };
+
+  // Cập nhật trạng thái nút
+  const updateButtons = () => {
+    const cardWidth = getCardWidth();
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    
+    if (slider.scrollLeft <= 0) {
+      prevBtn.disabled = true;
+      currentIndex = 0;
+    } else {
+      prevBtn.disabled = false;
+    }
+
+    if (slider.scrollLeft >= maxScroll - 1) {
+      nextBtn.disabled = true;
+      currentIndex = cards.length - 1;
+    } else {
+      nextBtn.disabled = false;
+    }
+  };
+
+  // Trượt đến vị trí cụ thể
+  const scrollToIndex = (index, smooth = true) => {
+    const cardWidth = getCardWidth();
+    const targetScroll = index * cardWidth;
+    slider.scrollTo({
+      left: targetScroll,
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+    currentIndex = index;
+  };
+
+  // Trượt theo số lượng card
+  const scrollByCards = (direction) => {
+    const cardWidth = getCardWidth();
+    const currentScroll = slider.scrollLeft;
+    const scrollAmount = cardWidth;
+    
+    let targetScroll;
+    if (direction === 'next') {
+      targetScroll = currentScroll + scrollAmount;
+    } else {
+      targetScroll = currentScroll - scrollAmount;
+    }
+
+    slider.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    });
+  };
+
+  // Xử lý nút Prev
+  prevBtn.addEventListener('click', () => {
+    scrollByCards('prev');
+  });
+
+  // Xử lý nút Next
+  nextBtn.addEventListener('click', () => {
+    scrollByCards('next');
+  });
+
+  // Xử lý scroll để cập nhật nút
+  slider.addEventListener('scroll', () => {
+    updateButtons();
+  });
+
+  // Xử lý resize để cập nhật lại
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateButtons();
+    }, 250);
+  });
+
+  // Drag để trượt
+  slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    const rect = slider.getBoundingClientRect();
+    startX = e.pageX - rect.left;
+    scrollLeft = slider.scrollLeft;
+    slider.style.cursor = 'grabbing';
+    slider.style.userSelect = 'none';
+    e.preventDefault();
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDragging = false;
+    slider.style.cursor = 'grab';
+    slider.style.userSelect = '';
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDragging = false;
+    slider.style.cursor = 'grab';
+    slider.style.userSelect = '';
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const rect = slider.getBoundingClientRect();
+    const x = e.pageX - rect.left;
+    const walk = (x - startX) * 2; // Tốc độ kéo
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  // Scroll wheel ngang
+  slider.addEventListener('wheel', (e) => {
+    // Chỉ xử lý scroll ngang hoặc khi giữ Shift để scroll ngang
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
+      e.preventDefault();
+      const cardWidth = getCardWidth();
+      const scrollAmount = e.deltaX || e.deltaY;
+      slider.scrollLeft += scrollAmount;
+    }
+  }, { passive: false });
+
+  // Touch events cho mobile
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].pageX - slider.offsetLeft;
+    touchScrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('touchmove', (e) => {
+    if (!e.touches[0]) return;
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - touchStartX) * 2;
+    slider.scrollLeft = touchScrollLeft - walk;
+  });
+
+  // Khởi tạo
+  slider.style.cursor = 'grab';
+  updateButtons();
+};
+
 /* Ready */
 $(document).ready(function () {
   PHP_FRAMEWORK.Homes();
@@ -1353,5 +1709,7 @@ $(document).ready(function () {
   PHP_FRAMEWORK.NewsTab();
   PHP_FRAMEWORK.Wows();
   PHP_FRAMEWORK.BarMenu();
+  PHP_FRAMEWORK.ServicesSlider();
+  PHP_FRAMEWORK.FeaturesSlider();
   // PHP_FRAMEWORK.NoCopy();
 });
