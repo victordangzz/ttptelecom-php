@@ -33,6 +33,7 @@ $config['static'][$nametype]['desc'] = true;        // Đoạn văn 1
 $config['static'][$nametype]['desc_cke'] = true;
 $config['static'][$nametype]['content'] = true;     // Đoạn văn 2
 $config['static'][$nametype]['content_cke'] = true;
+$config['static'][$nametype]['options'] = true;     // JSON: stats (stat1_value, stat1_label, stat2_value, stat2_label, stat3_value, stat3_label, stat4_value, stat4_label)
 $config['static'][$nametype]['seo'] = false;
 $config['static'][$nametype]['width'] = 0;
 $config['static'][$nametype]['height'] = 0;
@@ -110,3 +111,55 @@ $config['news'][$nametype]['width'] = 400;
 $config['news'][$nametype]['height'] = 400;
 $config['news'][$nametype]['thumb'] = '100x100x2';
 $config['news'][$nametype]['img_type'] = '.jpg|.png|.webp|.svg';
+
+// =====================================================
+// MODULES MỚI (Theo thiết kế mới)
+// =====================================================
+
+/* ABOUT INTRO - GIỚI THIỆU CÔNG TY (với ảnh) */
+$nametype = "about-intro";
+$config['static'][$nametype]['title_main'] = "Giới thiệu công ty";
+$config['static'][$nametype]['check'] = array("hienthi" => "Hiển thị");
+$config['static'][$nametype]['images'] = true;      // Ảnh team/office
+$config['static'][$nametype]['show_images'] = true;
+$config['static'][$nametype]['slogan'] = true;      // Badge text: "Giới thiệu"
+$config['static'][$nametype]['name'] = true;        // Tiêu đề: "Về TTP Telecom"
+$config['static'][$nametype]['desc'] = true;        // Đoạn văn 1
+$config['static'][$nametype]['desc_cke'] = true;
+$config['static'][$nametype]['content'] = true;     // Đoạn văn 2 & 3
+$config['static'][$nametype]['content_cke'] = true;
+$config['static'][$nametype]['seo'] = false;
+$config['static'][$nametype]['width'] = 800;
+$config['static'][$nametype]['height'] = 600;
+$config['static'][$nametype]['thumb'] = '400x300x1';
+$config['static'][$nametype]['img_type'] = '.jpg|.png|.webp';
+
+/* ABOUT STATS - SỐ LIỆU NỔI BẬT */
+$nametype = "about-stats";
+$config['news'][$nametype]['title_main'] = "Số liệu nổi bật";
+$config['news'][$nametype]['view'] = false;
+$config['news'][$nametype]['copy'] = true;
+$config['news'][$nametype]['slug'] = false;
+$config['news'][$nametype]['check'] = array("hienthi" => "Hiển thị");
+$config['news'][$nametype]['images'] = false;
+$config['news'][$nametype]['slogan'] = true;        // "HEADER" hoặc "primary"/"secondary"
+$config['news'][$nametype]['name'] = true;          // Value: "50+", "3", "100+", "99.9%"
+$config['news'][$nametype]['desc'] = true;          // Label: "Đội ngũ nhân sự chuyên nghiệp"
+$config['news'][$nametype]['content'] = false;
+$config['news'][$nametype]['seo'] = false;
+$config['news'][$nametype]['options'] = true;       // JSON: icon type
+
+/* CORE VALUES IMAGE - ẢNH ĐỘI NGŨ */
+$nametype = "core-values-image";
+$config['static'][$nametype]['title_main'] = "Ảnh đội ngũ (Core Values)";
+$config['static'][$nametype]['check'] = array("hienthi" => "Hiển thị");
+$config['static'][$nametype]['images'] = true;      // Ảnh team meeting lớn
+$config['static'][$nametype]['show_images'] = true;
+$config['static'][$nametype]['name'] = false;
+$config['static'][$nametype]['desc'] = false;
+$config['static'][$nametype]['content'] = false;
+$config['static'][$nametype]['seo'] = false;
+$config['static'][$nametype]['width'] = 1200;
+$config['static'][$nametype]['height'] = 500;
+$config['static'][$nametype]['thumb'] = '600x250x1';
+$config['static'][$nametype]['img_type'] = '.jpg|.png|.webp';

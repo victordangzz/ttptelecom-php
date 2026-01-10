@@ -62,7 +62,6 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
     </div>
   </section>
 <?php } ?>
-
 <!-- Company Profile -->
 <?php if (!empty($profile)) { ?>
   <section class="company-profile">
@@ -150,27 +149,100 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
   </section>
 <?php } ?>
 
+
+<!-- About Stats Section -->
+<?php if (!empty($about_stats)) {
+  // Tách header và stat items
+  $stats_header = null;
+  $stat_items = array();
+
+  foreach ($about_stats as $item) {
+    if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
+      $stats_header = $item;
+    } else {
+      $stat_items[] = $item;
+    }
+  }
+?>
+  <section class="about-stats-section">
+    <div class="container">
+      <?php if ($stats_header) { ?>
+        <div class="section-header">
+          <div class="section-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span><?= $stats_header['name' . $lang] ?></span>
+          </div>
+          <h2 class="section-title">
+            <?= !empty($stats_header['desc' . $lang]) ? $stats_header['desc' . $lang] : 'Con số ấn tượng' ?>
+          </h2>
+        </div>
+      <?php } ?>
+
+      <div class="stats-grid">
+        <?php
+        if (!empty($stat_items)) {
+          $icons = array(
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>'
+          );
+
+          $i = 0;
+          foreach ($stat_items as $stat) {
+            $style_class = (strtolower($stat['slogan' . $lang]) == 'secondary') ? 'secondary' : 'primary';
+            $icon = isset($icons[$i]) ? $icons[$i] : $icons[0];
+        ?>
+            <div class="stat-card <?= $style_class ?>">
+              <div class="corner-bracket tl"></div>
+              <div class="corner-bracket tr"></div>
+              <div class="corner-bracket bl"></div>
+              <div class="corner-bracket br"></div>
+
+              <div class="stat-icon <?= $style_class ?>">
+                <?= $icon ?>
+              </div>
+
+              <div class="stat-value <?= $style_class ?>"><?= $stat['name' . $lang] ?></div>
+              <div class="stat-label"><?= $stat['desc' . $lang] ?></div>
+
+              <div class="pulse-dot <?= $style_class == 'secondary' ? 'secondary' : '' ?>"></div>
+            </div>
+        <?php
+            $i++;
+          }
+        }
+        ?>
+      </div>
+    </div>
+  </section>
+<?php } ?>
+
 <!-- Vision & Mission -->
 <?php if (!empty($vision_mission)) { ?>
   <section class="vision-mission">
     <div class="container">
       <div class="vm-grid">
-        <?php foreach ($vision_mission as $item) { 
+        <?php foreach ($vision_mission as $item) {
           $icon_type = strtolower($item['slogan' . $lang]);
         ?>
           <div class="vm-card">
             <div class="vm-icon">
               <?php if ($icon_type == 'vision') { ?>
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
               <?php } else { ?>
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 16v-4"></path>
-                <path d="M12 8h.01"></path>
-              </svg>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 16v-4"></path>
+                  <path d="M12 8h.01"></path>
+                </svg>
               <?php } ?>
             </div>
             <h3 class="vm-title"><?= $item['name' . $lang] ?></h3>
@@ -185,11 +257,11 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
 <?php } ?>
 
 <!-- Core Values -->
-<?php if (!empty($core_values)) { 
+<?php if (!empty($core_values)) {
   // Tách header và items
   $values_header = null;
   $value_items = array();
-  
+
   foreach ($core_values as $item) {
     if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
       $values_header = $item;
@@ -215,6 +287,25 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
         </div>
       <?php } ?>
 
+      <!-- Team Image -->
+      <?php if (!empty($core_values_image) && !empty($core_values_image['photo'])) { ?>
+        <div class="team-image-wrapper">
+          <div class="tech-frame-large"></div>
+          <div class="corner-large tl"></div>
+          <div class="corner-large tr"></div>
+          <div class="corner-large bl"></div>
+          <div class="corner-large br"></div>
+
+          <div class="team-image">
+            <img src="<?= THUMBS ?>/1200x500x1/<?= UPLOAD_PHOTO_L . $core_values_image['photo'] ?>"
+              alt="TTP Telecom Team Meeting">
+          </div>
+
+          <div class="scan-line-effect"></div>
+        </div>
+      <?php } ?>
+
+      <!-- Values Grid -->
       <div class="values-grid">
         <?php foreach ($value_items as $value) { ?>
           <div class="value-card">
@@ -244,11 +335,11 @@ $cta_options = !empty($cta['options']) ? json_decode($cta['options'], true) : ar
 <?php } ?>
 
 <!-- Infrastructure -->
-<?php if (!empty($infrastructure)) { 
+<?php if (!empty($infrastructure)) {
   // Tách header và items
   $infra_header = null;
   $infra_items = array();
-  
+
   foreach ($infrastructure as $item) {
     if (strtoupper($item['slogan' . $lang]) === 'HEADER') {
       $infra_header = $item;

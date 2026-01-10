@@ -4,7 +4,7 @@
         <div class="gradient-base"></div>
         <div class="tech-grid"></div>
         <div class="hexagon-pattern"></div>
-        
+
         <svg class="circuit-lines" xmlns="http://www.w3.org/2000/svg">
             <line class="circuit-line" x1="10%" y1="20%" x2="40%" y2="60%" />
             <line class="circuit-line" x1="60%" y1="30%" x2="90%" y2="70%" />
@@ -13,7 +13,7 @@
             <line class="circuit-line" x1="15%" y1="50%" x2="45%" y2="25%" />
             <line class="circuit-line" x1="55%" y1="75%" x2="80%" y2="45%" />
         </svg>
-        
+
         <div class="network-nodes">
             <div class="node"></div>
             <div class="node"></div>
@@ -28,7 +28,7 @@
             <div class="node"></div>
             <div class="node"></div>
         </div>
-        
+
         <div class="glow-orb glow-orb-1"></div>
         <div class="glow-orb glow-orb-2"></div>
         <div class="scan-line-effect"></div>
@@ -177,8 +177,7 @@
                             class="form-input fullname"
                             placeholder="Nhập họ tên của bạn"
                             value="<?= $flash->get('fullname') ?>"
-                            required
-                        />
+                            required />
                         <div class="invalid-feedback"><?= vuilongnhaphoten ?></div>
                     </div>
 
@@ -193,8 +192,7 @@
                             class="form-input fullname"
                             placeholder="Số điện thoại của bạn"
                             value="<?= $flash->get('phone') ?>"
-                            required
-                        />
+                            required />
                         <div class="invalid-feedback"><?= vuilongnhapsodienthoai ?></div>
                     </div>
 
@@ -209,8 +207,7 @@
                             class="form-input fullname"
                             placeholder="email@example.com"
                             value="<?= $flash->get('email') ?>"
-                            required
-                        />
+                            required />
                         <div class="invalid-feedback"><?= vuilongnhapdiachiemail ?></div>
                     </div>
 
@@ -225,8 +222,7 @@
                             class="form-input fullname"
                             placeholder="Địa chỉ của bạn"
                             value="<?= $flash->get('address') ?>"
-                            required
-                        />
+                            required />
                         <div class="invalid-feedback"><?= vuilongnhapdiachi ?></div>
                     </div>
 
@@ -241,8 +237,7 @@
                             class="form-input fullname"
                             placeholder="Chủ đề liên hệ"
                             value="<?= $flash->get('subject') ?>"
-                            required
-                        />
+                            required />
                         <div class="invalid-feedback"><?= vuilongnhapchude ?></div>
                     </div>
 
@@ -256,8 +251,7 @@
                             class="form-textarea fullname"
                             placeholder="Mô tả chi tiết nhu cầu của bạn..."
                             rows="5"
-                            required
-                        ><?= $flash->get('content') ?></textarea>
+                            required><?= $flash->get('content') ?></textarea>
                         <div class="invalid-feedback"><?= vuilongnhapnoidung ?></div>
                     </div>
 
@@ -277,51 +271,50 @@
 
 <!-- Contact Map Section -->
 <?php if (!empty($optsetting['coords'])) { ?>
-<section class="contact-map-section">
-    <div class="container">
-        <div class="contact-map-wrapper">
-            <div class="section-header">
-                <div class="section-badge">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
-                    </svg>
-                    <span>Vị trí</span>
-                </div>
-            </div>
-
-            <div class="map-container">
-                <div class="tech-frame"></div>
-                <div class="corner-tl"></div>
-                <div class="corner-tr"></div>
-                <div class="corner-bl"></div>
-                <div class="corner-br"></div>
-
-                <div class="map-wrapper">
-                    <iframe
-                        src="https://maps.google.com/maps?q=<?= $optsetting['coords'] ?>&amp;z=16&amp;output=embed"
-                        width="100%"
-                        height="100%"
-                        style="border: 0"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="TTP Telecom Location"
-                    ></iframe>
-
-                    <div class="map-overlay">
-                        <div class="map-address">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span><?= (!empty($optsetting['address' . $lang])) ? $optsetting['address' . $lang] : '297 Gò Dầu, P. Phú Thọ Hòa, Quận Tân Phú, TP.HCM' ?></span>
-                        </div>
+    <section class="contact-map-section">
+        <div class="container">
+            <div class="contact-map-wrapper">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                        </svg>
+                        <span>Vị trí</span>
                     </div>
+                </div>
 
-                    <div class="scan-line-effect"></div>
+                <div class="map-container">
+                    <div class="tech-frame"></div>
+                    <div class="corner-tl"></div>
+                    <div class="corner-tr"></div>
+                    <div class="corner-bl"></div>
+                    <div class="corner-br"></div>
+
+                    <div class="map-wrapper">
+                        <iframe
+                            src="https://maps.google.com/maps?q=<?= $optsetting['coords'] ?>&amp;z=16&amp;output=embed"
+                            width="100%"
+                            height="100%"
+                            style="border: 0"
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="TTP Telecom Location"></iframe>
+
+                        <div class="map-overlay">
+                            <div class="map-address">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span><?= (!empty($optsetting['address' . $lang])) ? $optsetting['address' . $lang] : '297 Gò Dầu, P. Phú Thọ Hòa, Quận Tân Phú, TP.HCM' ?></span>
+                            </div>
+                        </div>
+
+                        <div class="scan-line-effect"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 <?php } ?>
